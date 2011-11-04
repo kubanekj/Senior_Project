@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <EditText android:text="Please enter caloric intake" android:id="@+id/calories" 
+		android:layout_height="wrap_content" android:layout_width="fill_parent" android:inputType="number"></EditText>
+  <EditText android:text="Please enter fat intake (grams)" android:id="@+id/fat" 
+		android:layout_height="wrap_content" android:layout_width="fill_parent" android:inputType="number"></EditText>
+  <EditText android:text="Please enter saturated fat intake (grams)" android:id="@+id/satFat" 
+		android:layout_height="wrap_content" android:layout_width="fill_parent" android:inputType="number"></EditText>
+  <EditText android:text="Please enter trans fat intake (grams)" android:id="@+id/transFat" 
+		android:layout_height="wrap_content" android:layout_width="fill_parent" android:inputType="number"></EditText>
+  <EditText android:text="Please enter unsaturated fat intake (grams)" android:id="@+id/unsatFat" 
+		android:layout_height="wrap_content" android:layout_width="fill_parent" android:inputType="number"></EditText>
+  <EditText android:text="Please enter carb intake (grams)" android:id="@+id/carbs" 
+		android:layout_height="wrap_content" android:layout_width="fill_parent" android:inputType="number"></EditText>
+  <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/submitNu"
+		android:text="Submit"></Button>
+</LinearLayout>

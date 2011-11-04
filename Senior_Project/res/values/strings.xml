@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>  
+        <!--Other string resources also defined in this file… --> 
+        <string name="app_name">Senior_Project</string> 
+        <string name="feedbacktitle">Please enter your information</string>
+        <string name="feedbackname">Please enter your username</string>
+        <string name="feedbackweight">Please enter your weight</string>  
+       
+        <string name="feedbackbutton">Send Feedback</string>
+        <string name="feedbackresponse"></string>
+        <string name="information">Information</string>
+        <string name="diet">Diet</string>
+        <string name="exercise">Exercise</string>
+        <string name="tracking">Tracking</string>
+        <string name="exit">Exit</string>
+        <string name="feedbacktype1">Praise</string>  
+        <string name="feedbacktype2">Gripe</string>  
+        <string name="feedbacktype3">Suggestion</string>  
+        <string name="feedbacktype4">Bug</string>
+        <string name="feedbacktype">Type</string>
+        <string name="days">Days</string>
+        <string name="weeks">Weeks</string>
+        <string name="months">Months</string>
+		<string name="time">Time frame</string>
+		<string name="password">Please enter your password</string>
+		<string name="verifyPassword">Please verify your password</string>
+		
+		<string name="lbs">lbs</string>
+		<string name="kg">kg</string>
+		<string name="userWeight">Weight</string>
+		<string name="Weight">weight</string>
+		<string name="infoWeight">weight info</string>
+		<string name="goalWeight">goal weight</string>
+      
+      
+    <string-array name="timeframe">     
+    	<item>@string/days</item>
+        <item>@string/weeks</item>  
+        <item>@string/months</item>
+    </string-array> 
+    
+    <string-array name="infoWeightArray">     
+    	<item>@string/lbs</item>
+        <item>@string/kg</item>  
+    </string-array> 
+    
+    <string-array name="weightArray">     
+    	<item>@string/lbs</item>
+        <item>@string/kg</item>  
+    </string-array> 
+    
+    <string-array name="userinfo">     
+        <item>@string/feedbacktype1</item>  
+        <item>@string/feedbacktype2</item>  
+        <item>@string/feedbacktype3</item>  
+        <item>@string/feedbacktype4</item>  
+    </string-array> 
+</resources>  

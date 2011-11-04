@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/calories"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter caloric intake" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/fat"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter fat intake (grams)" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/satFat"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter saturated fat intake (grams)" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/transFat"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter trans fat intake (grams)" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/unsatFat"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter unsaturated fat intake (grams)" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/cholesterol"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter cholesterol intake" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/carbs"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter carb intake" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/sodium"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter sodium intake (grams)" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/protein"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="number"
+        android:text="Please enter protein intake" >
+    </EditText>
+
+    <Button
+        android:id="@+id/submitNutr"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Submit" >
+    </Button>
+
+</LinearLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/goalTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:inputType="number"
+            android:text="Please enter timeframe" >
+        </EditText>
+
+        <Spinner
+            android:id="@+id/Time"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:entries="@array/timeframe"
+            android:prompt="@string/time" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/startDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinner1"
+        android:inputType="number"
+        android:text="Please enter start date" >
+    </EditText>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/weightGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="Please enter goal weight" >
+        </EditText>
+
+        <Spinner
+            android:id="@+id/Weight"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:entries="@array/weightArray"
+            android:prompt="@string/Weight" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/submitGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit" >
+    </Button>
+
+</LinearLayout>

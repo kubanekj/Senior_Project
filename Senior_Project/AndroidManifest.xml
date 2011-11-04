@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="senior.project.test"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+
+     <application android:label="@string/app_name" android:debuggable="true">
+    <uses-permission android:name="android.permission.INTERNET" /> 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+- <activity android:name=".Senior_ProjectActivity" android:label="@string/app_name">
+- <intent-filter>
+  <action android:name="android.intent.action.MAIN" /> 
+  <category android:name="android.intent.category.LAUNCHER" /> 
+  </intent-filter>
+  </activity>
+  <activity android:label="@string/app_name" android:name=".InformationActivity" /> 
+  <activity android:label="@string/app_name" android:name=".NutritionActivity" /> 
+  <activity android:label="@string/app_name" android:name=".ExerciseActivity" /> 
+  <activity android:label="@string/app_name" android:name=".TrackingActivity" /> 
+  <activity android:label="@string/app_name" android:name=".GoalActivity" /> 
+  <activity android:label="@string/app_name" android:name=".WeightHistory" /> 
+  <activity android:label="@string/app_name" android:name=".LoginActivity" /> 
+  </application>
+  </manifest>

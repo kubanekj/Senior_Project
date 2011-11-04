@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="fill_parent" 
+  android:orientation="vertical" 
+  android:layout_width="match_parent">
+		<Button 
+            android:layout_gravity="center_horizontal" 
+            android:layout_height="0dp"
+        	android:layout_width="match_parent" 
+        	android:id="@+id/loginPage" 
+        	android:text="Login" 
+        	android:layout_weight="1"></Button>
+        <Button 
+            android:layout_gravity="center_horizontal" 
+            android:layout_height="0dp"
+        	android:layout_width="match_parent" 
+        	android:id="@+id/info" 
+        	android:text="Information" 
+        	android:layout_weight="1"></Button>
+
+       	 <Button 
+       	     android:layout_gravity="center_horizontal" 
+       	     android:layout_height="0dp"
+        	 android:layout_width="match_parent" 
+        	 android:id="@+id/Goal" 
+        	 android:text="Goal" 
+        	 android:layout_weight="1"></Button>
+    	<Button 
+    	    android:layout_gravity="center_horizontal" 
+    	    android:layout_height="0dp" 
+    		android:layout_width="match_parent" 
+    		android:id="@+id/nutr" 
+    		android:text="Nutrition" 
+    		android:layout_weight="1"></Button>
+    	<Button 
+    	    android:layout_gravity="center_horizontal" 
+    	    android:layout_height="0dp" 
+    		android:layout_width="match_parent" 
+    		android:id="@+id/exer" 
+    		android:text="Exercise" 
+    		android:layout_weight="1"></Button>
+    	<Button 
+    	    android:layout_gravity="center_horizontal" 
+    	    android:layout_height="0dp" 
+    		android:layout_width="match_parent" 
+    		android:id="@+id/WeightAct" 
+    		android:text="Weight Tracking" 
+    		android:layout_weight="1"></Button>	
+   		<Button 
+   		    android:id="@+id/track" 
+   		    android:text="Tracking" 
+   		    android:layout_gravity="center_horizontal" 
+   			android:layout_width="match_parent" 
+   			android:layout_weight="1" 
+   			android:layout_height="0dp"></Button>
+    	<Button 
+    	    android:id="@+id/exit" 
+    	    android:text="Exit Application" 
+    	    android:layout_height="0dp" 
+    		android:layout_gravity="center_horizontal" 
+    		android:layout_width="match_parent" 
+    		android:layout_weight="1"></Button>    
+</LinearLayout>
