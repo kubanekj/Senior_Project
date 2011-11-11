@@ -3,10 +3,10 @@ package senior.project.test;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -31,11 +31,11 @@ public class ExerciseActivity extends Activity{
 		setContentView(R.layout.exercise);
 		
 
-		if (isNetworkAvailable(this.getApplicationContext())) {
+		/*if (isNetworkAvailable(this.getApplicationContext())) {
 			online = true;
    	     Toast t = Toast.makeText(this,"You are online!!!!",8000);
    	     t.show();
-		}/* else {  
+		} else {  
             Toast t = Toast.makeText(this,"You are not online!!!!",8000);
             t.show();
       		Log.v("Home", "############################You are not online!!!!");    
@@ -45,6 +45,8 @@ public class ExerciseActivity extends Activity{
 		//When the sumbit button is clicked, user info is stored and 
 		//the activity is ended, returning to the menu
 		final Button submit = (Button) findViewById(R.id.submitNu);
+		submit.getBackground().setColorFilter(0xFF00F0E0, PorterDuff.Mode.MULTIPLY);
+		//submit.
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	final EditText calories = (EditText) findViewById(R.id.calories);  
