@@ -17,10 +17,9 @@ public class LoginActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	
-            	/*EditText editText = (EditText) findViewById(R.id.logPassword);
+            	EditText editText = (EditText) findViewById(R.id.logPassword);
                 editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD); 
                 editText.setTransformationMethod(new PasswordTransformationMethod()); 
-                */
             	finish();
             }
         
