@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1" >
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="137dp"
+        android:layout_height="20dp"
+        android:text="Goal Time Frame" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
@@ -12,7 +17,7 @@
 
         <EditText
             android:id="@+id/goalTime"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
@@ -31,9 +36,15 @@
 
     </RelativeLayout>
 
+        
+        <TextView
+        android:id="@+id/username"
+        android:layout_width="137dp"
+        android:layout_height="20dp"
+        android:text="Choose Start Date" />
     <EditText
         android:id="@+id/startDate"
-        android:layout_width="fill_parent"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/spinner1"
@@ -41,6 +52,12 @@
         android:text="Please enter start date" >
     </EditText>
 
+        
+        <TextView
+        android:id="@+id/username"
+        android:layout_width="137dp"
+        android:layout_height="20dp"
+        android:text="Please Enter Your Goal Weight" />
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
@@ -48,7 +65,7 @@
 
         <EditText
             android:id="@+id/weightGoal"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:text="Please enter goal weight" >

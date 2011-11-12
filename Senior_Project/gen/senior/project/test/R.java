@@ -20,11 +20,11 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int EditTextName=0x7f060013;
-        public static final int EditTextWeight=0x7f060016;
+        public static final int EditTextName=0x7f060014;
+        public static final int EditTextWeight=0x7f060017;
         public static final int Goal=0x7f060028;
-        public static final int Time=0x7f06000c;
-        public static final int Weight=0x7f060010;
+        public static final int Time=0x7f06000d;
+        public static final int Weight=0x7f060011;
         public static final int WeightAct=0x7f06002b;
         public static final int button1=0x7f060023;
         public static final int button2=0x7f060024;
@@ -34,32 +34,32 @@ public final class R {
         public static final int calories=0x7f060003;
         public static final int carbs=0x7f060008;
         public static final int cholesterol=0x7f06002e;
-        public static final int dateDisplay=0x7f060017;
+        public static final int dateDisplay=0x7f060018;
         public static final int digitalClock1=0x7f060020;
         public static final int exer=0x7f06002a;
         public static final int exit=0x7f06002d;
         public static final int fat=0x7f060004;
-        public static final int goalTime=0x7f06000b;
+        public static final int goalTime=0x7f06000c;
         public static final int image=0x7f060001;
         public static final int info=0x7f060027;
-        public static final int laidout=0x7f060012;
+        public static final int laidout=0x7f060013;
         public static final int layout_root=0x7f060000;
         public static final int logPassword=0x7f06001e;
         public static final int loginPage=0x7f060026;
         public static final int nutr=0x7f060029;
-        public static final int pass=0x7f060014;
-        public static final int pickDate=0x7f060018;
+        public static final int pass=0x7f060015;
+        public static final int pickDate=0x7f060019;
         public static final int protein=0x7f060030;
-        public static final int radio0=0x7f06001b;
-        public static final int radio1=0x7f06001a;
+        public static final int radio0=0x7f06001c;
+        public static final int radio1=0x7f06001b;
         public static final int relativeLayout=0x7f060032;
-        public static final int relativeLayout1=0x7f06000a;
+        public static final int relativeLayout1=0x7f06000b;
         public static final int satFat=0x7f060005;
         public static final int sodium=0x7f06002f;
-        public static final int spinner1=0x7f06000e;
-        public static final int startDate=0x7f06000d;
-        public static final int submit=0x7f06001c;
-        public static final int submitGoal=0x7f060011;
+        public static final int spinner1=0x7f06000f;
+        public static final int startDate=0x7f06000e;
+        public static final int submit=0x7f06001d;
+        public static final int submitGoal=0x7f060012;
         public static final int submitLogin=0x7f06001f;
         public static final int submitNu=0x7f060009;
         public static final int submitNutr=0x7f060031;
@@ -68,11 +68,11 @@ public final class R {
         public static final int track=0x7f06002c;
         public static final int transFat=0x7f060006;
         public static final int unsatFat=0x7f060007;
-        public static final int user_pass=0x7f060019;
-        public static final int username=0x7f06001d;
-        public static final int verifyPass=0x7f060015;
+        public static final int user_pass=0x7f06001a;
+        public static final int username=0x7f06000a;
+        public static final int verifyPass=0x7f060016;
         public static final int weightEntry=0x7f060033;
-        public static final int weightGoal=0x7f06000f;
+        public static final int weightGoal=0x7f060010;
     }
     public static final class layout {
         public static final int dialog=0x7f030000;
