@@ -21,9 +21,11 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
@@ -33,7 +35,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,9 @@ public class InformationActivity extends Activity{
 	String USER_INFO;
 	
 	SharedPreferences settings;
+	
+	
+	int genderChoice=0;
 	
 	private TextView mDateDisplay;
     private Button mPickDate;
@@ -128,8 +132,16 @@ public class InformationActivity extends Activity{
 
         // display the current date (this method is below)
         updateDisplay();
-
-		
+        
+        
+        
+        
+        final Button chooseGender = (Button) findViewById(R.id.gender);
+        chooseGender.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	showDialog(10);
+            }
+            });
         final Button submit = (Button) findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -142,12 +154,17 @@ public class InformationActivity extends Activity{
         
             	birthday = mYear + mMonth + mDay+ " ";        
             	
-            	final RadioButton gender0 = (RadioButton) findViewById(R.id.radio0);
+            	/*final RadioButton gender0 = (RadioButton) findViewById(R.id.radio0);
             	
             	if(gender0.isChecked()){
             		gender = "Female ";
             	}else{
             		gender = "Male ";
+            	}*/
+            	if(genderChoice ==0){
+            		gender = " Male";            		
+            	}else{
+            		gender = "Female";
             	}
             	
         		if(c1.isChecked()){
@@ -221,6 +238,19 @@ public class InformationActivity extends Activity{
                 return new DatePickerDialog(this,
                             mDateSetListener,
                             mYear, mMonth, mDay);
+            case 10:
+            	final CharSequence[] items = {"Male", "Female"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Pick a color");
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+                        genderChoice = item;
+                    }
+                });
+                AlertDialog alert = builder.create();
+                return alert;
             }
             return null;
         }
