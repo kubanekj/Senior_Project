@@ -53,62 +53,17 @@ public class WeightHistory extends Activity {
         // display the current date (this method is below)
         updateDisplay();
 		
-		/*if (Connection.getInstance(this).isOnline(this)) {
-			online = true;
-   	     Toast t = Toast.makeText(this,"You are online!!!!",8000);
-   	     t.show();
-		} else {  
-            Toast t = Toast.makeText(this,"You are not online!!!!",8000);
-            t.show();
-      		Log.v("Home", "############################You are not online!!!!");    
-		}*/	
-   	    
 		
 		//When the sumbit button is clicked, user info is stored and 
 		//the activity is ended, returning to the menu
 		final Button submit = (Button) findViewById(R.id.submitWeight);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	/*final EditText calories = (EditText) findViewById(R.id.calories);  
-            	String cals = calories.getText().toString();  
-		        
-            	final EditText fat = (EditText) findViewById(R.id.fat);  
-            	String fatAmount = fat.getText().toString();  
-		        
-            	final EditText satFat = (EditText) findViewById(R.id.satFat);  
-            	String satFatAmount = satFat.getText().toString();
-		      
-            	final EditText transFat = (EditText) findViewById(R.id.transFat);  
-            	String transFatAmount = transFat.getText().toString();
-            	
-            	final EditText unsatFat = (EditText) findViewById(R.id.unsatFat);  
-            	String unsatFatAmount = unsatFat.getText().toString();
-		       
-            	final EditText carbs = (EditText) findViewById(R.id.carbs);  
-            	String carbAmount = carbs.getText().toString();
-            	
-            	
-            	
-
-            	//Store information
-            	String FILENAME = "test_ex";
-            	try{
-            		fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-            	}catch(FileNotFoundException fnf){
-            		fnf.printStackTrace();
-            	}
-            	try{
-            		fos.write(cals.getBytes());
-            	}catch(IOException ioe){
-            		ioe.printStackTrace();
-            	}*/
             	//Once the info is stored, exit the activity
             	//Return to the main menu
             	finish();
             }
-        
         });
-		 
 	}
 	
 	 // updates the date in the TextView

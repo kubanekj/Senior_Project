@@ -8,9 +8,9 @@ import android.widget.Button;
 public class TrackingActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.nutrition);
+		setContentView(R.layout.tracking);
 		
-		final Button submit = (Button) findViewById(R.id.submit);
+		final Button submit = (Button) findViewById(R.id.endTracking);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	finish();

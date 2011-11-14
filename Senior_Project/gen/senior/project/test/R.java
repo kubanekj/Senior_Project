@@ -36,6 +36,7 @@ public final class R {
         public static final int cholesterol=0x7f06002d;
         public static final int dateDisplay=0x7f060018;
         public static final int digitalClock1=0x7f06001f;
+        public static final int endTracking=0x7f060031;
         public static final int exer=0x7f060029;
         public static final int exit=0x7f06002c;
         public static final int fat=0x7f060004;
@@ -51,7 +52,7 @@ public final class R {
         public static final int pass=0x7f060015;
         public static final int pickDate=0x7f060019;
         public static final int protein=0x7f06002f;
-        public static final int relativeLayout=0x7f060031;
+        public static final int relativeLayout=0x7f060032;
         public static final int relativeLayout1=0x7f06000b;
         public static final int satFat=0x7f060005;
         public static final int sodium=0x7f06002e;
@@ -62,7 +63,7 @@ public final class R {
         public static final int submitLogin=0x7f06001e;
         public static final int submitNu=0x7f060009;
         public static final int submitNutr=0x7f060030;
-        public static final int submitWeight=0x7f060033;
+        public static final int submitWeight=0x7f060034;
         public static final int text=0x7f060002;
         public static final int track=0x7f06002b;
         public static final int transFat=0x7f060006;
@@ -70,7 +71,7 @@ public final class R {
         public static final int user_pass=0x7f06001a;
         public static final int username=0x7f06000a;
         public static final int verifyPass=0x7f060016;
-        public static final int weightEntry=0x7f060032;
+        public static final int weightEntry=0x7f060033;
         public static final int weightGoal=0x7f060010;
     }
     public static final class layout {
@@ -83,7 +84,8 @@ public final class R {
         public static final int mainmenu=0x7f030006;
         public static final int nutr=0x7f030007;
         public static final int nutrition=0x7f030008;
-        public static final int weight=0x7f030009;
+        public static final int tracking=0x7f030009;
+        public static final int weight=0x7f03000a;
     }
     public static final class string {
         public static final int Weight=0x7f04001a;

@@ -87,28 +87,7 @@ public class InformationActivity extends Activity{
         	c1.setChecked(check);
         }
 		
-		/*File file = getFileStreamPath("userinfo");
-	    if (file != null) {
-	    
-		readIn = readInternalStoragePrivate("userinfo");
-		String myString = new String(readIn); 
-		//String userStuff = convertByteArrayToString(readIn);
-		String[] userinfoFromFile= myString.split(" ");
-	    
-		if(userinfoFromFile != null){
-			checked = userinfoFromFile[2];
-			/*if(checked.equals(true)){
-				username.setText(userinfoFromFile[0]);
-				pass.setText(userinfoFromFile[1]);
-				c1.setChecked(true);
-			}
-		}
-	}*/
-
-		
-		
-		
-		
+	
 		View mlayout = findViewById(R.id.laidout);
 		//mlayout.setBackgroundResource(R.drawable.lifter);
 
@@ -154,14 +133,7 @@ public class InformationActivity extends Activity{
         
             	birthday = mYear + mMonth + mDay+ " ";        
             	
-            	/*final RadioButton gender0 = (RadioButton) findViewById(R.id.radio0);
-            	
-            	if(gender0.isChecked()){
-            		gender = "Female ";
-            	}else{
-            		gender = "Male ";
-            	}*/
-            	if(genderChoice ==0){
+               	if(genderChoice ==0){
             		gender = " Male";            		
             	}else{
             		gender = "Female";
@@ -172,10 +144,6 @@ public class InformationActivity extends Activity{
         		}else{
         			checked = "false ";
         		}
-        		
-        		
-        		
-
         		
         		//Store information
         		String[] info = {name, email, birthday, gender};
@@ -258,32 +226,7 @@ public class InformationActivity extends Activity{
          * Reads a file from internal storage
          * @param filename the file to read from
          * @return the file content
-         */
-        public byte[] readInternalStoragePrivate(String filename) {
-            int len = 1024;
-            byte[] buffer = new byte[len];
-            try {
-                FileInputStream fis = openFileInput(filename);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                int nrb = fis.read(buffer, 0, len); // read up to len bytes
-                while (nrb != -1) {
-                    baos.write(buffer, 0, nrb);
-                    nrb = fis.read(buffer, 0, len);
-                }
-                buffer = baos.toByteArray();
-                fis.close();
-            } catch (FileNotFoundException e) {
-            	e.printStackTrace();
-        	} catch (IOException e) {
-                e.printStackTrace();
-            }
-            return buffer;
-        }
-        public String convertByteArrayToString(byte[] input) {                
-        	String value = new String(input);                
-        	return value;
-        }
-            
+         */ 
         public void writeToFile(String[] userInput, String storageFilename){
         	FileOutputStream fos = null ;
         	try{
@@ -319,9 +262,7 @@ public class InformationActivity extends Activity{
                     Toast.makeText(this, "Sending complete!", Toast.LENGTH_LONG).show();
                 }else{
                 	Toast.makeText(this, "Sending complete!", Toast.LENGTH_LONG).show();
-                }
-
-                
+                }     
             } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
             } catch (IOException e) {

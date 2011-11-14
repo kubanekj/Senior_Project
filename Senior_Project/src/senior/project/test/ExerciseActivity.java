@@ -28,19 +28,7 @@ public class ExerciseActivity extends Activity{
 	 */
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.exercise);
-		
-
-		/*if (isNetworkAvailable(this.getApplicationContext())) {
-			online = true;
-   	     Toast t = Toast.makeText(this,"You are online!!!!",8000);
-   	     t.show();
-		} else {  
-            Toast t = Toast.makeText(this,"You are not online!!!!",8000);
-            t.show();
-      		Log.v("Home", "############################You are not online!!!!");    
-		}*/
-   	    
+		setContentView(R.layout.exercise);   	    
 		
 		//When the sumbit button is clicked, user info is stored and 
 		//the activity is ended, returning to the menu
