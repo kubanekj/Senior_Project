@@ -43,11 +43,11 @@ public final class R {
         public static final int gender=0x7f06001b;
         public static final int goalTime=0x7f06000c;
         public static final int image=0x7f060001;
-        public static final int info=0x7f060026;
+        public static final int infoButton=0x7f060025;
         public static final int laidout=0x7f060013;
         public static final int layout_root=0x7f060000;
         public static final int logPassword=0x7f06001d;
-        public static final int loginPage=0x7f060025;
+        public static final int loginButton=0x7f060026;
         public static final int nutr=0x7f060028;
         public static final int pass=0x7f060015;
         public static final int pickDate=0x7f060019;

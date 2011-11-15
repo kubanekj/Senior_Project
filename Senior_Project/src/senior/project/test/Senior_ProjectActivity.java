@@ -20,11 +20,11 @@ public class Senior_ProjectActivity extends Activity {
         	finish();
         }
     });
-    //If login page button is clicked, start login activity
-    final Button startLogin = (Button) findViewById(R.id.loginPage);
+    //If login page button is clicked, start information activity
+    final Button startLogin = (Button) findViewById(R.id.infoButton);
     startLogin.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-        	Intent loginIntent = new Intent(Senior_ProjectActivity.this, LoginActivity.class);
+        	Intent loginIntent = new Intent(Senior_ProjectActivity.this, InformationActivity.class);
         	Senior_ProjectActivity.this.startActivity(loginIntent);
         }
     });
@@ -44,11 +44,11 @@ public class Senior_ProjectActivity extends Activity {
         	Senior_ProjectActivity.this.startActivity(exerIntent);
         }
     });
-  //If information page button is clicked, start information activity
-    final Button startInfo = (Button) findViewById(R.id.info);
+  //If information page button is clicked, start login activity
+    final Button startInfo = (Button) findViewById(R.id.loginButton);
     startInfo.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-        	Intent myIntent = new Intent(Senior_ProjectActivity.this, InformationActivity.class);
+        	Intent myIntent = new Intent(Senior_ProjectActivity.this, LoginActivity.class);
         	Senior_ProjectActivity.this.startActivity(myIntent);
         }
     });

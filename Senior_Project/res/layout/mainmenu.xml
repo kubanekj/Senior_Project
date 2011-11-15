@@ -4,20 +4,22 @@
   android:layout_height="fill_parent" 
   android:orientation="vertical" 
   android:layout_width="match_parent">
+
+   
+
         <Button 
             android:layout_gravity="center_horizontal" 
             android:layout_height="0dp"
         	android:layout_width="match_parent" 
-        	android:id="@+id/info" 
+        	android:id="@+id/infoButton" 
         	android:text="Information" 
         	android:layout_weight="1"></Button>
-
-        <Button
-            android:id="@+id/loginPage"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Login" />
+         <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Login" ></Button>
 
        	 <Button 
        	     android:layout_gravity="center_horizontal" 

@@ -131,7 +131,8 @@ public class InformationActivity extends Activity{
             	final EditText emailField = (EditText) findViewById(R.id.EditTextWeight);  
             	email = emailField.getText().toString() + " ";  
         
-            	birthday = mYear + mMonth + mDay+ " ";        
+            	birthday = mYear +"-"+ mMonth +"-"+ mDay+ " ";        
+         
             	
                	if(genderChoice ==0){
             		gender = " Male";            		
