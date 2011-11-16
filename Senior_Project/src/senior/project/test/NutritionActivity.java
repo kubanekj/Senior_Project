@@ -1,19 +1,17 @@
 package senior.project.test;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class NutritionActivity extends Activity {
 	 //An output stream to save user nutrition info
 	FileOutputStream fos;
+	
+
 	@Override
 	/*
 	 * (non-Javadoc)
@@ -23,13 +21,15 @@ public class NutritionActivity extends Activity {
 	 */
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.nutrition);
+		setContentView(R.layout.nutr);
+		
+
 		
 		//When the submit button is clicked, it will save user info
 		final Button submitNutr = (Button) findViewById(R.id.submitNutr);
         submitNutr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	final EditText calories = (EditText) findViewById(R.id.calories);  
+            	/*final EditText calories = (EditText) findViewById(R.id.calories);  
             	String cals = calories.getText().toString();  
 		        
             	final EditText fat = (EditText) findViewById(R.id.fat);  
@@ -57,6 +57,7 @@ public class NutritionActivity extends Activity {
             	String proteinAmount = protein.getText().toString();
             	
             	//Store information
+            	 FileOutputStream fos;
             	String FILENAME = "test_nutr";
             	try{
             		fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
@@ -76,7 +77,7 @@ public class NutritionActivity extends Activity {
             		fos.close();
             	}catch(IOException ioe){
             		ioe.printStackTrace();
-            	}
+            	}*/
             	//Once the information is stored, close the activity
             	finish();
             }

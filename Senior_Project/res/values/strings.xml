@@ -31,6 +31,22 @@
 		<string name="Weight">weight</string>
 		<string name="infoWeight">weight info</string>
 		<string name="goalWeight">goal weight</string>
+		
+		<string name="breakfastchoice">Breakfast</string>
+		<string name="lunchchoice">Lunch</string>
+		<string name="dinnerchoice">Dinner</string>
+		
+	    <string name="eggs">Eggs</string>
+	    <string name="pancakes">Pancakes</string>
+	    <string name="bacon">Bacon</string>
+	    
+        <string name="turkey">Turkey Sandwich</string>
+        <string name="burger">Burger</string>
+        <string name="sub">Sub</string>
+	        
+        <string name="steak">Steak</string>
+        <string name="roast">Roast</string>
+        <string name="ribs">Ribs</string>
       
       
     <string-array name="timeframe">     
@@ -49,6 +65,30 @@
         <item>@string/kg</item>  
     </string-array> 
     
+    <string-array name="foodCategories">     
+    	<item>@string/breakfastchoice</item>
+        <item>@string/lunchchoice</item>  
+        <item>@string/dinnerchoice</item>
+    </string-array> 
+    
+    <string-array name="breakfast">     
+    	<item>@string/eggs</item>
+        <item>@string/pancakes</item>  
+        <item>@string/bacon</item>
+    </string-array> 
+    
+   	<string-array name="lunch">     
+    	<item>@string/turkey</item>
+        <item>@string/burger</item>  
+        <item>@string/sub</item>
+    </string-array> 
+    
+    <string-array name="dinner">     
+    	<item>@string/steak</item>
+        <item>@string/roast</item>  
+        <item>@string/ribs</item>
+    </string-array> 
+        
     <string-array name="userinfo">     
         <item>@string/feedbacktype1</item>  
         <item>@string/feedbacktype2</item>  

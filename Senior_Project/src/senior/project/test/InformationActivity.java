@@ -168,7 +168,7 @@ public class InformationActivity extends Activity{
                
                 if(c1.isChecked()){
                 	editor.putString("username", nameField.getText().toString());
-                    editor.putString("paswword",plainPass.toString());
+                    editor.putString("password",plainPass.toString());
                 	editor.putBoolean("checked", true);
         		}else{
         			editor.putBoolean("checked",false);

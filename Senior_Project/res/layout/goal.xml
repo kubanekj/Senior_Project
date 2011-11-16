@@ -36,22 +36,17 @@
 
     </RelativeLayout>
 
-        
-        <TextView
-        android:id="@+id/username"
-        android:layout_width="137dp"
-        android:layout_height="20dp"
-        android:text="Choose Start Date" />
-    <EditText
-        android:id="@+id/startDate"
-        android:layout_width="220dp"
+    <TextView
+        android:id="@+id/goalDateDisplay"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/spinner1"
-        android:inputType="number"
-        android:text="Please enter start date" >
-    </EditText>
+        android:text="TextView" />
 
+    <Button
+        android:id="@+id/pickGoalDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick Today's Date" />
         
         <TextView
         android:id="@+id/username"
