@@ -3,14 +3,20 @@ package senior.project.test;
 import java.io.FileOutputStream;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 public class NutritionActivity extends Activity {
 	 //An output stream to save user nutrition info
 	FileOutputStream fos;
-	
+	Spinner category;
+	Spinner choices;
 
 	@Override
 	/*
@@ -21,12 +27,52 @@ public class NutritionActivity extends Activity {
 	 */
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.nutr);
+		setContentView(R.layout.food);
 		
+		category = (Spinner) findViewById(R.id.Categories);
+		choices = (Spinner) findViewById(R.id.foodOptions);
+		
+		/*if(category.getSelectedItem().toString() == "Breakfast"){
+			//choices.setAdapter(adapter);
+		}else if(category.getSelectedItem().toString() == "Lunch"){
+			
+		}else{
+			
+		}*/
+		
+	    category.setOnItemSelectedListener(
+	            new OnItemSelectedListener() {
+	                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+	                    // Here's what I need help with. I basically want it to say:
+	                	Context ctx = getBaseContext();
+	                     switch(position) {
+
+	                     case 0:
+	                    	 ArrayAdapter adapter1 = ArrayAdapter.createFromResource(category.getContext(), R.array.breakfast, android.R.layout.simple_spinner_dropdown_item);
+	                    	 //adapter1.setDropDownViewResource(android.R.drawable.spinner_background);
+	                    	 
+	                    	 choices.setAdapter(adapter1);
+	                    	 
+	                    	 break;
+	                     case 1:
+	                    	 ArrayAdapter adapter2 = ArrayAdapter.createFromResource(ctx, R.array.lunch, android.R.layout.simple_spinner_dropdown_item);
+	                    	 choices.setAdapter(adapter2);
+	                    	 break;
+	                     case 2:
+	                    	 ArrayAdapter adapter3 = ArrayAdapter.createFromResource(ctx, R.array.dinner, android.R.layout.simple_spinner_dropdown_item);
+	                    	 choices.setAdapter(adapter3);
+	                    	 break;
+	                }
+	                }
+	                public void onNothingSelected(AdapterView<?> parents) {
+
+	                }
+	                }
+	            );
 
 		
 		//When the submit button is clicked, it will save user info
-		final Button submitNutr = (Button) findViewById(R.id.submitNutr);
+		final Button submitNutr = (Button) findViewById(R.id.closenutr);
         submitNutr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	/*final EditText calories = (EditText) findViewById(R.id.calories);  

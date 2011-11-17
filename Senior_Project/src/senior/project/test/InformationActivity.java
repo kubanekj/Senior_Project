@@ -53,7 +53,7 @@ public class InformationActivity extends Activity{
 	
 	
 	int genderChoice=0;
-	
+	static Button chooseGender;
 	private TextView mDateDisplay;
     private Button mPickDate;
     private int mYear;
@@ -115,10 +115,11 @@ public class InformationActivity extends Activity{
         
         
         
-        final Button chooseGender = (Button) findViewById(R.id.gender);
+        chooseGender = (Button) findViewById(R.id.gender);
         chooseGender.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	showDialog(10);
+            	
             }
             });
         final Button submit = (Button) findViewById(R.id.submit);
@@ -135,10 +136,11 @@ public class InformationActivity extends Activity{
          
             	
                	if(genderChoice ==0){
-            		gender = " Male";            		
+            		gender = " Male"; 
             	}else{
             		gender = "Female";
             	}
+               	
             	
         		if(c1.isChecked()){
         			checked = "true ";
@@ -211,11 +213,17 @@ public class InformationActivity extends Activity{
             	final CharSequence[] items = {"Male", "Female"};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Pick a color");
+                builder.setTitle("Choose Your Gender");
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
                         Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
                         genderChoice = item;
+                        if(genderChoice == 0){
+                    		chooseGender.setText("Male");
+                    	}else{
+                    		chooseGender.setText("Female");
+                    	}
+                        
                     }
                 });
                 AlertDialog alert = builder.create();

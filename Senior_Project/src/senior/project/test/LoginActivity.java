@@ -14,6 +14,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
@@ -51,6 +52,8 @@ public class LoginActivity extends Activity {
             	/*EditText editText = (EditText) findViewById(R.id.logPassword);
                 editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD); 
                 editText.setTransformationMethod(new PasswordTransformationMethod());*/ 
+            	Intent myIntent = new Intent(LoginActivity.this, EnterInfoActivity.class);
+            	LoginActivity.this.startActivity(myIntent);
             	finish();
             }
         

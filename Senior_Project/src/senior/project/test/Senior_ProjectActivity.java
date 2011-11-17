@@ -20,31 +20,8 @@ public class Senior_ProjectActivity extends Activity {
         	finish();
         }
     });
-    //If login page button is clicked, start information activity
-    final Button startLogin = (Button) findViewById(R.id.infoButton);
-    startLogin.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-        	Intent loginIntent = new Intent(Senior_ProjectActivity.this, InformationActivity.class);
-        	Senior_ProjectActivity.this.startActivity(loginIntent);
-        }
-    });
-    //If nutrition page button is clicked, start nutrition activity
-    final Button startNutrition = (Button) findViewById(R.id.nutr);
-    startNutrition.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-        	Intent nutrIntent = new Intent(Senior_ProjectActivity.this, NutritionActivity.class);
-        	Senior_ProjectActivity.this.startActivity(nutrIntent);
-        }
-    });
-  //If exercise page button is clicked, start exercise activity
-    final Button startExercise = (Button) findViewById(R.id.exer);
-    startExercise.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-        	Intent exerIntent = new Intent(Senior_ProjectActivity.this, ExerciseActivity.class);
-        	Senior_ProjectActivity.this.startActivity(exerIntent);
-        }
-    });
-  //If information page button is clicked, start login activity
+    
+    //If login page button is clicked, start login activity
     final Button startInfo = (Button) findViewById(R.id.loginButton);
     startInfo.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
@@ -52,30 +29,16 @@ public class Senior_ProjectActivity extends Activity {
         	Senior_ProjectActivity.this.startActivity(myIntent);
         }
     });
-  //If tracking page button is clicked, start tracking activity
-    final Button startTrack = (Button) findViewById(R.id.track);
-    startTrack.setOnClickListener(new View.OnClickListener() {
+
+    //If information page button is clicked, start information activity
+    final Button startLogin = (Button) findViewById(R.id.infoButton);
+    startLogin.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-        	Intent myIntent = new Intent(Senior_ProjectActivity.this, TrackingActivity.class);
-        	Senior_ProjectActivity.this.startActivity(myIntent);
+        	Intent loginIntent = new Intent(Senior_ProjectActivity.this, InformationActivity.class);
+        	Senior_ProjectActivity.this.startActivity(loginIntent);
         }
-    });  
-  //If goal page button is clicked, start goal activity
-    final Button startGoal = (Button) findViewById(R.id.Goal);
-    startGoal.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-        	Intent myIntent = new Intent(Senior_ProjectActivity.this, GoalActivity.class);
-        	Senior_ProjectActivity.this.startActivity(myIntent);
-        }
-    });  
-  //If weight page button is clicked, start weight activity
-    final Button startWeight = (Button) findViewById(R.id.WeightAct);
-    startWeight.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-        	Intent myIntent = new Intent(Senior_ProjectActivity.this, WeightHistory.class);
-        	Senior_ProjectActivity.this.startActivity(myIntent);
-        }
-    }); 
+    });
+    
     
     }
 }

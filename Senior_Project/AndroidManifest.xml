@@ -19,6 +19,7 @@
   </intent-filter>
   </activity>
   <activity android:label="@string/app_name" android:name=".InformationActivity" /> 
+  <activity android:label="@string/app_name" android:name=".EnterInfoActivity" /> 
   <activity android:label="@string/app_name" android:name=".NutritionActivity" /> 
   <activity android:label="@string/app_name" android:name=".ExerciseActivity" /> 
   <activity android:label="@string/app_name" android:name=".TrackingActivity" /> 
