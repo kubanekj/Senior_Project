@@ -36,6 +36,10 @@
 		<string name="lunchchoice">Lunch</string>
 		<string name="dinnerchoice">Dinner</string>
 		
+		<string name="lightchoice">Light</string>
+		<string name="moderatechoice">Moderate</string>
+		<string name="intensechoice">Intense</string>
+		
 	    <string name="eggs">Eggs</string>
 	    <string name="pancakes">Pancakes</string>
 	    <string name="bacon">Bacon</string>
@@ -47,7 +51,18 @@
         <string name="steak">Steak</string>
         <string name="roast">Roast</string>
         <string name="ribs">Ribs</string>
-      
+        
+        <string name="walk">Walking</string>
+      	<string name="yoga">Yoga</string>
+      	<string name="bicycle">Bicycling</string>
+      	
+   	    <string name="jogging">Light Jogging</string>
+   	    <string name="speedwalk">Speed Walking</string>
+  	    <string name="pushup">Push Ups</string>
+  	    
+        <string name="marathon">Marathon</string>
+        <string name="weightlift">Weight Lifting</string>
+        <string name="cardio">Cardio</string>
       
     <string-array name="timeframe">     
     	<item>@string/days</item>
@@ -71,6 +86,12 @@
         <item>@string/dinnerchoice</item>
     </string-array> 
     
+    <string-array name="exerCategories">     
+    	<item>@string/lightchoice</item>
+        <item>@string/moderatechoice</item>  
+        <item>@string/intensechoice</item>
+    </string-array> 
+    
     <string-array name="breakfast">     
     	<item>@string/eggs</item>
         <item>@string/pancakes</item>  
@@ -88,6 +109,27 @@
         <item>@string/roast</item>  
         <item>@string/ribs</item>
     </string-array> 
+    
+    <string-array name="light">     
+    	<item>@string/walk</item>
+        <item>@string/yoga</item>  
+        <item>@string/bicycle</item>
+    </string-array> 
+    
+    <string-array name="moderate">     
+    	<item>@string/jogging</item>
+        <item>@string/speedwalk</item>  
+        <item>@string/pushup</item>
+    </string-array> 
+    
+    <string-array name="intense">     
+    	<item>@string/marathon</item>
+        <item>@string/weightlift</item>  
+        <item>@string/cardio</item>
+    </string-array> 
+                
+            
+        
         
     <string-array name="userinfo">     
         <item>@string/feedbacktype1</item>  
