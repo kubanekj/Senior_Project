@@ -32,7 +32,7 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
             	
             	String username =  findViewById(R.id.logUser).toString();
-            	String password = findViewById(R.id.logPassword).toString(); 
+            	String password = findViewById(R.id.logPass).toString(); 
             	try{
             	DefaultHttpClient hc=new DefaultHttpClient();  
             	ResponseHandler <String> res=new BasicResponseHandler();  

@@ -41,7 +41,7 @@ import android.widget.Toast;
 public class InformationActivity extends Activity{
 	private FileOutputStream fos, user;
 	String name, email, gender,birthday,password,checked,user_info,FILENAME  = "test_info";
-	EditText username, pass;
+	EditText username, pass,verifyPass;
 	boolean bRequiresResponse;
 	File filename = new File("test_info"), users;
 	CheckBox c1;
@@ -61,6 +61,8 @@ public class InformationActivity extends Activity{
     private int mDay;
 
     static final int DATE_DIALOG_ID = 0;
+    static final int PASS = 5;
+    static final int ALPHANUM = 3;
 	
 	
 	@Override
@@ -72,6 +74,7 @@ public class InformationActivity extends Activity{
 		
 		username = (EditText) findViewById(R.id.EditTextName);
 		pass = (EditText) findViewById(R.id.pass);
+		verifyPass = (EditText) findViewById(R.id.verifyPass);
 		c1 = (CheckBox) findViewById(R.id.user_pass);
 		
 		settings = getSharedPreferences(USER_INFO,
@@ -125,7 +128,9 @@ public class InformationActivity extends Activity{
         final Button submit = (Button) findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	
+            	if (pass.getText().toString().matches("[a-zA-z0-9]*")) {
+            	if(pass.getText().toString().equals(verifyPass.getText().toString())){
+            		
             	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
             	name = nameField.getText().toString()+ " ";  
           
@@ -179,6 +184,13 @@ public class InformationActivity extends Activity{
                 editor.commit();
             	
             	finish();
+            	}else{
+                	showDialog(ALPHANUM);
+                }
+            	}else{
+            		showDialog(PASS);
+            	}
+            
             }
         });
 	}
@@ -223,12 +235,26 @@ public class InformationActivity extends Activity{
                     	}else{
                     		chooseGender.setText("Female");
                     	}
-                        
+                       
                     }
+                
+                	
                 });
                 AlertDialog alert = builder.create();
                 return alert;
+            case PASS:
+            	 AlertDialog.Builder invalid = new AlertDialog.Builder(this);
+                 invalid.setTitle("Passwords Must Match!");
+                 AlertDialog invalidPass = invalid.create();
+                 return invalidPass;
+                 
+            case ALPHANUM:
+            	AlertDialog.Builder alphanum = new AlertDialog.Builder(this);
+                alphanum.setTitle("Passwords May Only Contain Letters And Numbers!");
+                AlertDialog invalidAlphanum = alphanum.create();
+                return invalidAlphanum;
             }
+            
             return null;
         }
         /**

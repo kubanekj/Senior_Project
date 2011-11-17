@@ -4,49 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1" >
+    
     <TextView
-        android:id="@+id/username"
-        android:layout_width="137dp"
-        android:layout_height="20dp"
-        android:text="Goal Time Frame" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <EditText
-            android:id="@+id/goalTime"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:inputType="number"
-            android:text="Please enter timeframe" >
-        </EditText>
-
-        <Spinner
-            android:id="@+id/Time"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:entries="@array/timeframe"
-            android:prompt="@string/time" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/goalDateDisplay"
+        android:id="@+id/goalStartDateDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView" />
 
     <Button
-        android:id="@+id/pickGoalDate"
+        android:id="@+id/pickGoalStartDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pick Today's Date" />
+        android:text="Pick Start Date" />
+     <TextView
+        android:id="@+id/goalEndDateDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+     <Button
+        android:id="@+id/pickGoalEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick End Date" />
+
+    
         
         <TextView
         android:id="@+id/username"

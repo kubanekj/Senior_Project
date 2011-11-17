@@ -7,16 +7,23 @@
         android:id="@+id/username"
         android:layout_width="137dp"
         android:layout_height="20dp"
+        
         android:text="Username" />
-    <EditText android:text="Username" android:id="@+id/logUser" 
-		android:layout_height="wrap_content" android:layout_width="fill_parent" android:inputType="text"></EditText>
+    <EditText  
+        android:id="@+id/logUser" 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent" 
+		android:inputType="textPersonName"></EditText>
     <TextView
         android:id="@+id/logPassword"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:text="Password" />
-    <EditText android:text="Password" android:id="@+id/calories" 
-		android:layout_height="wrap_content" android:layout_width="fill_parent" android:inputType="number"></EditText>
+    <EditText  
+        android:id="@+id/logPass" 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent" 
+		android:inputType="textPassword"></EditText>
     <Button
         android:id="@+id/submitLogin"
         android:layout_width="wrap_content"

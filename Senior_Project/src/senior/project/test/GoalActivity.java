@@ -21,13 +21,14 @@ import android.widget.Toast;
 
 public class GoalActivity extends Activity {
 	
-	private TextView mDateDisplay;
-    private Button mPickDate;
-    private int mYear;
-    private int mMonth;
-    private int mDay;
+	private TextView mStartDateDisplay, mEndDateDisplay;
+    private Button mPickStartDate, mPickEndDate;
+    private int mStartYear, mEndYear;
+    private int mStartMonth, mEndMonth;
+    private int mStartDay, mEndDay;
 
-    static final int DATE_DIALOG_ID = 3;
+    static final int START_DATE_DIALOG_ID = 3;
+    static final int END_DATE_DIALOG_ID = 4;
 	 //An output stream to save user nutrition info
 	FileOutputStream fos;
 	@Override
@@ -43,24 +44,39 @@ public class GoalActivity extends Activity {
 		
 		
 		// capture our View elements
-        mDateDisplay = (TextView) findViewById(R.id.goalDateDisplay);
-        mPickDate = (Button) findViewById(R.id.pickGoalDate);
-
+        mStartDateDisplay = (TextView) findViewById(R.id.goalStartDateDisplay);
+        mPickStartDate = (Button) findViewById(R.id.pickGoalStartDate);
+        
+        mEndDateDisplay = (TextView) findViewById(R.id.goalEndDateDisplay);
+        mPickEndDate = (Button) findViewById(R.id.pickGoalEndDate);
+        
         // add a click listener to the button
-        mPickDate.setOnClickListener(new View.OnClickListener() {
+        mPickStartDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showDialog(DATE_DIALOG_ID);
+                showDialog(START_DATE_DIALOG_ID);
+            }
+        });
+        mPickEndDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDialog(END_DATE_DIALOG_ID);
             }
         });
 
         // get the current date
         final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        mStartYear = c.get(Calendar.YEAR);
+        mStartMonth = c.get(Calendar.MONTH);
+        mStartDay = c.get(Calendar.DAY_OF_MONTH);
+        
+        mEndYear = c.get(Calendar.YEAR);
+        mEndMonth = c.get(Calendar.MONTH);
+        mEndDay = c.get(Calendar.DAY_OF_MONTH);
+        
+        
 
         // display the current date (this method is below)
-        updateDisplay();
+        updateStartDisplay();
+        updateEndDisplay();
 		
 		//When the submit button is clicked, it will save user info
 		final Button submit = (Button) findViewById(R.id.submitGoal);
@@ -72,32 +88,54 @@ public class GoalActivity extends Activity {
         });
 	}
 	 // updates the date in the TextView
-    private void updateDisplay() {
-        mDateDisplay.setText(
+    private void updateStartDisplay() {
+        mStartDateDisplay.setText(
             new StringBuilder()
                     // Month is 0 based so add 1
-                    .append(mMonth + 1).append("-")
-                    .append(mDay).append("-")
-                    .append(mYear).append(" "));
+                    .append(mStartMonth + 1).append("-")
+                    .append(mStartDay).append("-")
+                    .append(mStartYear).append(" "));
+    }
+    private void updateEndDisplay() {
+        mEndDateDisplay.setText(
+            new StringBuilder()
+                    // Month is 0 based so add 1
+                    .append(mEndMonth + 1).append("-")
+                    .append(mEndDay).append("-")
+                    .append(mEndYear).append(" "));
     }
     // the callback received when the user "sets" the date in the dialog
-    private final DatePickerDialog.OnDateSetListener mDateSetListener =
+    private final DatePickerDialog.OnDateSetListener mStartDateSetListener =
         new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, 
                                   int monthOfYear, int dayOfMonth) {
-                mYear = year;
-                mMonth = monthOfYear;
-                mDay = dayOfMonth;
-                updateDisplay();
+                mStartYear = year;
+                mStartMonth = monthOfYear;
+                mStartDay = dayOfMonth;
+                updateStartDisplay();
             }
         };
+        private final DatePickerDialog.OnDateSetListener mEndDateSetListener =
+                new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker view, int year, 
+                                          int monthOfYear, int dayOfMonth) {
+                        mEndYear = year;
+                        mEndMonth = monthOfYear;
+                        mEndDay = dayOfMonth;
+                        updateEndDisplay();
+                    }
+                };
         @Override
         protected Dialog onCreateDialog(int id) {
             switch (id) {
-            case DATE_DIALOG_ID:
+            case START_DATE_DIALOG_ID:
                 return new DatePickerDialog(this,
-                            mDateSetListener,
-                            mYear, mMonth, mDay);
+                            mStartDateSetListener,
+                            mStartYear, mStartMonth, mStartDay);
+            case END_DATE_DIALOG_ID:
+                return new DatePickerDialog(this,
+                            mEndDateSetListener,
+                            mStartYear, mStartMonth, mStartDay);
             }
             return null;
         
