@@ -7,4 +7,6 @@ package senior.project.test;
  */
 public interface ServerConnection {
   
+  
+  
 }
