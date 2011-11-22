@@ -1,4 +1,6 @@
-package senior.project.test;
+//package senior.project.test;
+
+import org.json.JSONObject;
 
 /**
  * This class is only used for testing the ServerConnection class
@@ -6,6 +8,8 @@ package senior.project.test;
  */
 public class TestServerConnection {
   public static void main(String[] args) {
-    
+    ServerSession test = new ServerSession();
+    JSONObject testValue = test.getTest(1);
+    System.out.println(testValue);
   }
 }

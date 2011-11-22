@@ -1,6 +1,8 @@
-package senior.project.test;
+//package senior.project.test;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,9 +22,14 @@ public class ServerSession implements ServerConnection {
   public JSONObject getTest(int id) {
     URL url = null;
     HttpURLConnection conn = null;
+    String strResponse ;
+    JSONObject result;
     try {
-      url = new URL(SERVER_BASE_URL + "nutrition_get.html?id=" + id);
+      url = new URL(SERVER_BASE_URL + "nutrition_get.php?id=" + id);
       conn = (HttpURLConnection)url.openConnection();
+      strResponse = new BufferedReader(new
+              InputStreamReader(conn.getInputStream())).readLine();
+      result = (JSONObject)(new JSONTokener(strResponse).nextValue());
     }
     catch (MalformedURLException ex) {
       System.err.println("Malformed URL in getTest");
@@ -33,7 +40,12 @@ public class ServerSession implements ServerConnection {
       ex.printStackTrace();
       return null;
     }
-    return null;
+    catch (JSONException ex) {
+      System.err.println("JSON exception during getTest");
+      ex.printStackTrace();
+      return null;
+    }
+    return result;
   }
   
 }
