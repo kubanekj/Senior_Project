@@ -1,4 +1,4 @@
-//package senior.project.test;
+package senior.project.test;
 
 import java.io.BufferedReader;
 import java.io.IOException;

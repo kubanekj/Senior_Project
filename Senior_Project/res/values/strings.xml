@@ -3,8 +3,8 @@
         <!--Other string resources also defined in this file… --> 
         <string name="app_name">Senior_Project</string> 
         <string name="feedbacktitle">Please enter your information</string>
-        <string name="feedbackname">Please enter your username</string>
-        <string name="feedbackweight">Please enter your weight</string>  
+        <string name="usernameInput">Enter Username</string>
+        <string name="weightInput">Enter Weight</string>  
         <string name="gender">Gender</string>
         <string name="feedbackbutton">Send Feedback</string>
         <string name="feedbackresponse"></string>
@@ -22,8 +22,8 @@
         <string name="weeks">Weeks</string>
         <string name="months">Months</string>
 		<string name="time">Time frame</string>
-		<string name="password">Please enter your password</string>
-		<string name="verifyPassword">Please verify your password</string>
+		<string name="password">Enter Password</string>
+		<string name="verifyPassword">Verify Password</string>
 		
 		    
 		<string name="lbs">lbs</string>

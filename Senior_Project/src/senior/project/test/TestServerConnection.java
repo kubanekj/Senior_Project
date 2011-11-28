@@ -1,4 +1,4 @@
-//package senior.project.test;
+package senior.project.test;
 
 import org.json.JSONObject;
 

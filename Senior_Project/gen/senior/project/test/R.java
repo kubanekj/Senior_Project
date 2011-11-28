@@ -126,7 +126,6 @@ public final class R {
         public static final int exercise=0x7f040009;
         public static final int exit=0x7f04000b;
         public static final int feedbackbutton=0x7f040005;
-        public static final int feedbackname=0x7f040002;
         public static final int feedbackresponse=0x7f040006;
         public static final int feedbacktitle=0x7f040001;
         public static final int feedbacktype=0x7f040010;
@@ -160,6 +159,7 @@ public final class R {
         public static final int tracking=0x7f04000a;
         public static final int turkey=0x7f040026;
         public static final int userWeight=0x7f040019;
+        public static final int usernameInput=0x7f040002;
         public static final int verifyPassword=0x7f040016;
         public static final int walk=0x7f04002c;
         public static final int weeks=0x7f040012;
