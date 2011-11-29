@@ -42,6 +42,8 @@ public class GoalActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.goal);	
 		
+		View mlayout= findViewById(R.id.goalLayout);
+        mlayout.setBackgroundResource(R.drawable.fit);
 		
 		// capture our View elements
         mStartDateDisplay = (TextView) findViewById(R.id.goalStartDateDisplay);

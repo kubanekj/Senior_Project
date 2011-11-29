@@ -92,7 +92,7 @@ public class InformationActivity extends Activity{
 		
 	
 		View mlayout = findViewById(R.id.laidout);
-		//mlayout.setBackgroundResource(R.drawable.lifter);
+		mlayout.setBackgroundResource(R.drawable.fit);
 
 		
 		// capture our View elements

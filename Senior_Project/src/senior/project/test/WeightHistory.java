@@ -32,6 +32,9 @@ public class WeightHistory extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.weight);
 		
+		View mlayout= findViewById(R.id.weightLayout);
+        mlayout.setBackgroundResource(R.drawable.fit);
+		
 		
 		// capture our View elements
         mDateDisplay = (TextView) findViewById(R.id.dateDisplay);

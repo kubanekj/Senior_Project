@@ -13,6 +13,9 @@ public class Senior_ProjectActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu);
+        
+        View mlayout= findViewById(R.id.mainmenuLayout);
+        mlayout.setBackgroundResource(R.drawable.fit);
       
     final Button exitApp = (Button) findViewById(R.id.exit);
     exitApp.setOnClickListener(new View.OnClickListener() {

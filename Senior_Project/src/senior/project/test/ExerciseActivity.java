@@ -1,29 +1,25 @@
 package senior.project.test;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.PorterDuff;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 public class ExerciseActivity extends Activity{
 	//Output stream to save user input
 	FileOutputStream fos;
 	boolean online = false;
 	Spinner category,choices;
+	ArrayList<String> exercises= new ArrayList<String>();
 	@Override
 	/*
 	 * (non-Javadoc)
@@ -34,7 +30,11 @@ public class ExerciseActivity extends Activity{
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fitness);   	    
+		
+		View mlayout= findViewById(R.id.fitnessLayout);
+        mlayout.setBackgroundResource(R.drawable.fit);
 	
+		
 		category = (Spinner) findViewById(R.id.exerciseCategories);
 		choices = (Spinner) findViewById(R.id.exerciseOptions);
 		

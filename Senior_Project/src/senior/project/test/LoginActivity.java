@@ -27,6 +27,9 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 		
+		View mlayout= findViewById(R.id.loginLayout);
+        mlayout.setBackgroundResource(R.drawable.fit);
+		
 		final Button submit = (Button) findViewById(R.id.submitLogin);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

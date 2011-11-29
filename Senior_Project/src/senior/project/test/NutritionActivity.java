@@ -29,6 +29,9 @@ public class NutritionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.food);
 		
+		View mlayout= findViewById(R.id.foodLayout);
+        mlayout.setBackgroundResource(R.drawable.fit);
+		
 		category = (Spinner) findViewById(R.id.Categories);
 		choices = (Spinner) findViewById(R.id.foodOptions);
 		

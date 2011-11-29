@@ -10,6 +10,9 @@ public class TrackingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tracking);
 		
+		View mlayout= findViewById(R.id.trackingLayout);
+        mlayout.setBackgroundResource(R.drawable.fit);
+		
 		final Button submit = (Button) findViewById(R.id.endTracking);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
