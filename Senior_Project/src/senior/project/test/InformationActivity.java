@@ -125,7 +125,7 @@ public class InformationActivity extends Activity{
             	
             }
             });
-        final Button submit = (Button) findViewById(R.id.submit);
+        final Button submit = (Button) findViewById(R.id.submitRegisterPage);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	if (pass.getText().toString().matches("[a-zA-z0-9]*")) {

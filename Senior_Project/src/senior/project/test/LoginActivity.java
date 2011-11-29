@@ -33,21 +33,7 @@ public class LoginActivity extends Activity {
             	
             	String username =  findViewById(R.id.logUser).toString();
             	String password = findViewById(R.id.logPass).toString(); 
-            	try{
-            	DefaultHttpClient hc=new DefaultHttpClient();  
-            	ResponseHandler <String> res=new BasicResponseHandler();  
-            	HttpPost postMethod=new HttpPost("http://kawaii-rage.com/project/nutrition_get.php?id=1"); 
-            	List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2); 
-            	nameValuePairs.add(new BasicNameValuePair("usernname", username));     
-            	nameValuePairs.add(new BasicNameValuePair("password", password));    
-            	postMethod.setEntity(new UrlEncodedFormEntity(nameValuePairs));    
-            	String response=hc.execute(postMethod,res); 
-            	} catch (ClientProtocolException e) {
-                    // TODO Auto-generated catch block
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                }
-
+            	
             	
             	/*EditText editText = (EditText) findViewById(R.id.logPassword);
                 editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD); 

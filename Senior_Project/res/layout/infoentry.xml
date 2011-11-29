@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -7,54 +8,60 @@
     <ScrollView
         android:layout_width="match_parent"
     	android:layout_height="match_parent" >
+
     <LinearLayout
         android:layout_width="match_parent"
-    	android:layout_height="match_parent"
-    	android:orientation="vertical" >
-    
-    <Button 
-       	     android:layout_gravity="center_horizontal" 
-       	     android:layout_height="0dp"
-        	 android:layout_width="match_parent" 
-        	 android:id="@+id/Goal" 
-        	 android:text="Goal" 
-        	 android:layout_weight="1"></Button>
-    	<Button 
-    	    android:layout_gravity="center_horizontal" 
-    	    android:layout_height="0dp" 
-    		android:layout_width="match_parent" 
-    		android:id="@+id/nutr" 
-    		android:text="Nutrition" 
-    		android:layout_weight="1"></Button>
-    	<Button 
-    	    android:layout_gravity="center_horizontal" 
-    	    android:layout_height="0dp" 
-    		android:layout_width="match_parent" 
-    		android:id="@+id/exer" 
-    		android:text="Exercise" 
-    		android:layout_weight="1"></Button>
-    	<Button 
-    	    android:layout_gravity="center_horizontal" 
-    	    android:layout_height="0dp" 
-    		android:layout_width="match_parent" 
-    		android:id="@+id/WeightAct" 
-    		android:text="Weight Tracking" 
-    		android:layout_weight="1"></Button>	
-   		<Button 
-   		    android:id="@+id/track" 
-   		    android:text="Tracking" 
-   		    android:layout_gravity="center_horizontal" 
-   			android:layout_width="match_parent" 
-   			android:layout_weight="1" 
-   			android:layout_height="0dp"></Button>
-   		
-   		    <Button 
-   		    android:id="@+id/returnHome" 
-   		    android:text="Back to Home Screen" 
-   		    android:layout_gravity="center_horizontal" 
-   			android:layout_width="match_parent" 
-   			android:layout_weight="1" 
-   			android:layout_height="0dp"></Button>
-    	</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/Goal"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Goal" >
+        </Button>
+
+        <Button
+            android:id="@+id/nutr"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Nutrition" >
+        </Button>
+
+        <Button
+            android:id="@+id/exer"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Exercise" >
+        </Button>
+
+        <Button
+            android:id="@+id/WeightAct"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Weight Tracking" >
+        </Button>
+
+        <Button
+            android:id="@+id/track"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Tracking" >
+        </Button>
+
+        <Button
+            android:id="@+id/returnHome"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Back to Home Screen" >
+        </Button>
+    </LinearLayout>
+
 	</ScrollView>
 </LinearLayout>

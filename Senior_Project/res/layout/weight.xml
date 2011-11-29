@@ -47,15 +47,15 @@
 
     <Button
         android:id="@+id/pickDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+       android:layout_width="200dp"
+        android:layout_height="80dp"
         android:layout_gravity="left"
         android:text="Choose Date" />
 
     <Button
         android:id="@+id/submitWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
         android:text="Submit" >
     </Button>
 
