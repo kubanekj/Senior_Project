@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +40,7 @@ public class WeightHistory extends Activity {
 		// capture our View elements
         mDateDisplay = (TextView) findViewById(R.id.dateDisplay);
         mPickDate = (Button) findViewById(R.id.pickDate);
+        mPickDate.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 
         // add a click listener to the button
         mPickDate.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +62,7 @@ public class WeightHistory extends Activity {
 		//When the sumbit button is clicked, user info is stored and 
 		//the activity is ended, returning to the menu
 		final Button submit = (Button) findViewById(R.id.submitWeight);
+		submit.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	//Once the info is stored, exit the activity

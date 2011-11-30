@@ -15,6 +15,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
@@ -31,6 +32,7 @@ public class LoginActivity extends Activity {
         mlayout.setBackgroundResource(R.drawable.fit);
 		
 		final Button submit = (Button) findViewById(R.id.submitLogin);
+		submit.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	

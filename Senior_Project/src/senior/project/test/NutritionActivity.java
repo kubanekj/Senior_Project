@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,7 +34,9 @@ public class NutritionActivity extends Activity {
         mlayout.setBackgroundResource(R.drawable.fit);
 		
 		category = (Spinner) findViewById(R.id.Categories);
+		category.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		choices = (Spinner) findViewById(R.id.foodOptions);
+		choices.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		
 		/*if(category.getSelectedItem().toString() == "Breakfast"){
 			//choices.setAdapter(adapter);
@@ -76,6 +79,7 @@ public class NutritionActivity extends Activity {
 		
 		//When the submit button is clicked, it will save user info
 		final Button submitNutr = (Button) findViewById(R.id.closenutr);
+		submitNutr.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submitNutr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	/*final EditText calories = (EditText) findViewById(R.id.calories);  

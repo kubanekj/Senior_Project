@@ -11,6 +11,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,9 +49,11 @@ public class GoalActivity extends Activity {
 		// capture our View elements
         mStartDateDisplay = (TextView) findViewById(R.id.goalStartDateDisplay);
         mPickStartDate = (Button) findViewById(R.id.pickGoalStartDate);
+        mPickStartDate.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         
         mEndDateDisplay = (TextView) findViewById(R.id.goalEndDateDisplay);
         mPickEndDate = (Button) findViewById(R.id.pickGoalEndDate);
+        mPickEndDate.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         
         // add a click listener to the button
         mPickStartDate.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +85,7 @@ public class GoalActivity extends Activity {
 		
 		//When the submit button is clicked, it will save user info
 		final Button submit = (Button) findViewById(R.id.submitGoal);
+		submit.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	//Once the information is stored, close the activity

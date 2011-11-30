@@ -1,8 +1,6 @@
 package senior.project.test;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,12 +25,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,13 +42,9 @@ public class InformationActivity extends Activity{
 	EditText username, pass,verifyPass;
 	boolean bRequiresResponse;
 	File filename = new File("test_info"), users;
-	CheckBox c1;
 	byte[] readIn;
 	
 	String USER_INFO;
-	
-	SharedPreferences settings;
-	
 	
 	int genderChoice=0;
 	static Button chooseGender;
@@ -75,21 +69,6 @@ public class InformationActivity extends Activity{
 		username = (EditText) findViewById(R.id.EditTextName);
 		pass = (EditText) findViewById(R.id.pass);
 		verifyPass = (EditText) findViewById(R.id.verifyPass);
-		c1 = (CheckBox) findViewById(R.id.user_pass);
-		
-		settings = getSharedPreferences(USER_INFO,
-                Activity.MODE_PRIVATE);
-        String uname = settings.getString("username", null);
-        
-        String passw = settings.getString("password", null);
-        boolean check = settings.getBoolean(checked, false);
-
-        if(uname != null){
-        	username.setText(uname);
-        	pass.setText(passw);
-        	c1.setChecked(check);
-        }
-		
 	
 		View mlayout = findViewById(R.id.laidout);
 		mlayout.setBackgroundResource(R.drawable.fit);
@@ -98,6 +77,7 @@ public class InformationActivity extends Activity{
 		// capture our View elements
         mDateDisplay = (TextView) findViewById(R.id.dateDisplay);
         mPickDate = (Button) findViewById(R.id.pickDate);
+        mPickDate.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 
         // add a click listener to the button
         mPickDate.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +99,7 @@ public class InformationActivity extends Activity{
         
         
         chooseGender = (Button) findViewById(R.id.gender);
+        chooseGender.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         chooseGender.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	showDialog(10);
@@ -126,6 +107,7 @@ public class InformationActivity extends Activity{
             }
             });
         final Button submit = (Button) findViewById(R.id.submitRegisterPage);
+        submit.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	if (pass.getText().toString().matches("[a-zA-z0-9]*")) {
@@ -146,12 +128,6 @@ public class InformationActivity extends Activity{
             		gender = "Female";
             	}
                	
-            	
-        		if(c1.isChecked()){
-        			checked = "true ";
-        		}else{
-        			checked = "false ";
-        		}
         		
         		//Store information
         		String[] info = {name, email, birthday, gender};
@@ -168,20 +144,7 @@ public class InformationActivity extends Activity{
             	writeToFile(storedInfo, "userinfo");
             	
             	
-            	settings = getSharedPreferences(
-                        USER_INFO, MODE_WORLD_WRITEABLE);
-                SharedPreferences.Editor editor = settings.edit();
-
-               
-                if(c1.isChecked()){
-                	editor.putString("username", nameField.getText().toString());
-                    editor.putString("password",plainPass.toString());
-                	editor.putBoolean("checked", true);
-        		}else{
-        			editor.putBoolean("checked",false);
-        		}
-                
-                editor.commit();
+            	
             	
             	finish();
             	}else{

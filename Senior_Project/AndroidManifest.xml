@@ -8,23 +8,48 @@
     <uses-sdk android:minSdkVersion="8" />
     
 
-     <application android:label="@string/app_name" android:debuggable="true">
-    <uses-permission android:name="android.permission.INTERNET" /> 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+     <application 
+         android:label="@string/app_name"
+         android:icon="@drawable/fit" 
+         android:debuggable="true">
+    <uses-permission 
+        android:name="android.permission.INTERNET" /> 
+    <uses-permission 
+        android:name="android.permission.ACCESS_NETWORK_STATE" />
     
-- <activity android:name=".Senior_ProjectActivity" android:label="@string/app_name">
+- <activity 
+	android:name=".Senior_ProjectActivity" 
+	android:label="@string/app_name">
 - <intent-filter>
-  <action android:name="android.intent.action.MAIN" /> 
-  <category android:name="android.intent.category.LAUNCHER" /> 
+  <action 
+      android:name="android.intent.action.MAIN" /> 
+  <category 
+      android:name="android.intent.category.LAUNCHER" /> 
   </intent-filter>
   </activity>
-  <activity android:label="@string/app_name" android:name=".InformationActivity" /> 
-  <activity android:label="@string/app_name" android:name=".EnterInfoActivity" /> 
-  <activity android:label="@string/app_name" android:name=".NutritionActivity" /> 
-  <activity android:label="@string/app_name" android:name=".ExerciseActivity" /> 
-  <activity android:label="@string/app_name" android:name=".TrackingActivity" /> 
-  <activity android:label="@string/app_name" android:name=".GoalActivity" /> 
-  <activity android:label="@string/app_name" android:name=".WeightHistory" /> 
-  <activity android:label="@string/app_name" android:name=".LoginActivity" /> 
+  <activity 
+      android:label="@string/app_name" 
+      android:name=".InformationActivity" /> 
+  <activity 
+      android:label="@string/app_name" 
+      android:name=".EnterInfoActivity" /> 
+  <activity 
+      android:label="@string/app_name" 
+      android:name=".NutritionActivity" /> 
+  <activity 
+      android:label="@string/app_name" 
+      android:name=".ExerciseActivity" /> 
+  <activity 
+      android:label="@string/app_name" 
+      android:name=".TrackingActivity" /> 
+  <activity 
+      android:label="@string/app_name" 
+      android:name=".GoalActivity" /> 
+  <activity 
+      android:label="@string/app_name" 
+      android:name=".WeightHistory" /> 
+  <activity 
+      android:label="@string/app_name" 
+      android:name=".LoginActivity" /> 
   </application>
   </manifest>

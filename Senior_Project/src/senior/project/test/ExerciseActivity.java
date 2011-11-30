@@ -37,6 +37,8 @@ public class ExerciseActivity extends Activity{
 		
 		category = (Spinner) findViewById(R.id.exerciseCategories);
 		choices = (Spinner) findViewById(R.id.exerciseOptions);
+		category.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
+		choices.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		
 		/*if(category.getSelectedItem().toString() == "Breakfast"){
 			//choices.setAdapter(adapter);
@@ -79,7 +81,7 @@ public class ExerciseActivity extends Activity{
 		//When the sumbit button is clicked, user info is stored and 
 		//the activity is ended, returning to the menu
 		final Button submit = (Button) findViewById(R.id.closefit);
-		submit.getBackground().setColorFilter(0xFF00F0E0, PorterDuff.Mode.MULTIPLY);
+		submit.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		//submit.
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
