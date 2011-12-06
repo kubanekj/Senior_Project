@@ -8,7 +8,7 @@
     
     <TextView
         android:id="@+id/goalStartDateDisplay"
-        android:textColor="#00ff00"
+        android:textColor="#0000ff"
         android:background="#ffffff"
         android:textStyle="bold"
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
         android:text="Pick Start Date" />
      <TextView
         android:id="@+id/goalEndDateDisplay"
-        android:textColor="#00ff00"
+        android:textColor="#0000ff"
         android:background="#ffffff"
         android:textStyle="bold"
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:textColor="#0000ff"
         android:background="#ffffff"
         android:textStyle="bold"
-        android:layout_width="137dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:text="Please Enter Your Goal Weight" />
     <RelativeLayout
@@ -53,8 +53,7 @@
             android:textColor="#0000ff"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:text="Please enter goal weight" >
+            android:inputType="number">
         </EditText>
 
         <Spinner

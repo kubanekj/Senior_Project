@@ -60,6 +60,25 @@ public class EnterInfoActivity extends Activity{
             }
         }); 
         startWeight.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
+      //If exercise tracking page button is clicked, start weight activity
+        final Button startExerTrack = (Button) findViewById(R.id.exerTrack);
+        startExerTrack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	Intent myIntent = new Intent(EnterInfoActivity.this, ExerciseTrackingActivity.class);
+            	EnterInfoActivity.this.startActivity(myIntent);
+            }
+        }); 
+        startExerTrack.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
+      //If nutrition tracking page button is clicked, start weight activity
+        final Button startNutrTrack = (Button) findViewById(R.id.nutrTrack);
+        startNutrTrack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	Intent myIntent = new Intent(EnterInfoActivity.this, NutritionTrackingActivity.class);
+            	EnterInfoActivity.this.startActivity(myIntent);
+            }
+        }); 
+        startNutrTrack.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
+        
         //If "back to home screen" button is clicked, close activity
         final Button goHome = (Button) findViewById(R.id.returnHome);
         goHome.setOnClickListener(new View.OnClickListener() {

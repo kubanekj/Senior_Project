@@ -41,8 +41,8 @@ public class LoginActivity extends Activity {
             	
             	
             	/*EditText editText = (EditText) findViewById(R.id.logPassword);
-                editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD); 
-                editText.setTransformationMethod(new PasswordTransformationMethod());*/ 
+                editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                editText.setTransformationMethod(new PasswordTransformationMethod()); */
             	Intent myIntent = new Intent(LoginActivity.this, EnterInfoActivity.class);
             	LoginActivity.this.startActivity(myIntent);
             	finish();

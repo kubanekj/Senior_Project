@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+     <TextView
+        android:id="@+id/StartDate"
+        android:textColor="#0000ff"
+        android:background="#ffffff"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a Start Date" />
+    
+    <TextView
+        android:id="@+id/nutrStartDate"
+        android:textColor="#0000ff"
+        android:background="#ffffff"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/pickNutrStartDate"
+       android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:text="Button" />
+
+     <TextView
+        android:id="@+id/endDate"
+        android:textColor="#0000ff"
+        android:background="#ffffff"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose an End Date" />
+    
+    <TextView
+        android:id="@+id/nutrEndDate"
+       android:textColor="#0000ff"
+        android:background="#ffffff"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/pickNutrEndDate"
+       android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/getNutr"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:text="Get Info" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:text="Close" />
+
+</LinearLayout>

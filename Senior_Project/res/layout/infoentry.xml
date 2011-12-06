@@ -55,6 +55,20 @@
         </Button>
 
         <Button
+            android:id="@+id/exerTrack"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Exercise Tracking" />
+
+        <Button
+            android:id="@+id/nutrTrack"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Nutrition Tracking" />
+
+        <Button
             android:id="@+id/returnHome"
             android:layout_width="200dp"
             android:layout_height="80dp"

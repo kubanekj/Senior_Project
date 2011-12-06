@@ -110,7 +110,7 @@ public class InformationActivity extends Activity{
         submit.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	if (pass.getText().toString().matches("[a-zA-z0-9]*")) {
+            	/*if (pass.getText().toString().matches("[a-zA-z0-9]*")) {
             	if(pass.getText().toString().equals(verifyPass.getText().toString())){
             		
             	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
@@ -142,17 +142,17 @@ public class InformationActivity extends Activity{
             	
             	String[] storedInfo = {name, password, checked};
             	writeToFile(storedInfo, "userinfo");
-            	
+            	*/
             	
             	
             	
             	finish();
-            	}else{
+            	/*}else{
                 	showDialog(ALPHANUM);
                 }
             	}else{
             		showDialog(PASS);
-            	}
+            	}*/
             
             }
         });
