@@ -1,5 +1,6 @@
-package senior.project.test;
+package senior.project.test.server;
 
+import senior.project.test.server.ServerConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

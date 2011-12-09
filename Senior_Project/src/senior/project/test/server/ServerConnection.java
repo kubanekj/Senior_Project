@@ -1,4 +1,4 @@
-package senior.project.test;
+package senior.project.test.server;
 
 /**
  * The class that connects to the server will implement this interface, any
