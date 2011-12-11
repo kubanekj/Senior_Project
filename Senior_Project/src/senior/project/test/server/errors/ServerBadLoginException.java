@@ -6,8 +6,6 @@ package senior.project.test.server.errors;
  */
 public class ServerBadLoginException extends Exception {
 
-  public static final int CODE = 300;
-  
   public ServerBadLoginException(String msg) {
     super(msg);
   }

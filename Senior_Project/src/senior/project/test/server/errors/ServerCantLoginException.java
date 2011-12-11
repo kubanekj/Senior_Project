@@ -6,8 +6,6 @@ package senior.project.test.server.errors;
  */
 public class ServerCantLoginException extends RuntimeException {
 
-  public static final int CODE = 301;
-  
   public ServerCantLoginException(String msg) {
     super(msg);
   }
