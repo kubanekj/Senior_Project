@@ -12,18 +12,10 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.json.*;
-import senior.project.test.server.errors.ServerBadLoginException;
-import senior.project.test.server.errors.ServerBadRetrievalException;
-import senior.project.test.server.errors.ServerCantLoginException;
-import senior.project.test.server.errors.ServerConnectionException;
-import senior.project.test.server.errors.ServerInvalidAmountException;
-import senior.project.test.server.errors.ServerInvalidDateException;
-import senior.project.test.server.errors.ServerInvalidItemException;
-import senior.project.test.server.errors.ServerInvalidKeyException;
-import senior.project.test.server.errors.ServerInvalidMealException;
-import senior.project.test.server.errors.ServerInvalidUserException;
-import senior.project.test.server.errors.ServerInvalidWeightException;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import senior.project.test.server.errors.*;
 
 
 
@@ -157,6 +149,91 @@ public class Server implements ServerConstants {
     auth = (String)result.get(auth);
   }
   
+  /**
+   * Registers a new user
+   * @param userName the desired user name
+   * @param password1 the desired password
+   * @param password2 the desired password again, for confirmation
+   * @param email1 the user's email address
+   * @param email2 the user's email address again for confirmation
+   * @param gender the user's gender
+   * @param mesUnit the user's preferred measurement system
+   * @param weight the user's weight, in units indicated by mesUnit
+   * @param height the user's height, formatted as appropriate for mesUnit
+   * @param birthday the user's date of birth
+   * @throws ServerConnectionException
+   * @throws JSONException
+   * @throws ServerInvalidPasswordException
+   * @throws ServerInvalidUserException
+   * @throws ServerInvalidEmailException
+   * @throws ServerInvalidGenderException
+   * @throws ServerInvalidDateException
+   * @throws ServerInvalidUnitException
+   * @throws ServerInvalidWeightException
+   * @throws ServerInvalidHeightException 
+   */
+  public static void register(String userName, String password1,
+          String password2, String email1, String email2, Gender gender,
+          MeasurementSystem mesUnit, int weight, String height, Date birthday)
+          throws ServerConnectionException, JSONException,
+          ServerInvalidPasswordException, ServerInvalidUserException,
+          ServerInvalidEmailException, ServerInvalidWeightException,
+          ServerInvalidHeightException, ServerInvalidDateException {
+    PostBuilder post = new PostBuilder();
+    post.add("request", "register");
+    post.add("username", userName);
+    post.add("password_1", password1);
+    post.add("password_2", password2);
+    post.add("email_1", email1);
+    post.add("email_2", email2);
+    switch(gender) {
+      case MALE:
+        post.add("gender", "M");
+        break;
+      case FEMALE:
+        post.add("gender", "F");
+        break;
+    }
+    switch(mesUnit) {
+      case US:
+        post.add("unit", "us");
+        break;
+      case METRIC:
+        post.add("unit", "me");
+        break;
+    }
+    post.add("weight", "" + weight);
+    post.add("height", height);
+    post.add("birthday", DATE_FORMAT.format(birthday));
+    JSONObject response = runTransaction(post);
+    if(((String)response.get("response")).equals("ERROR")) {
+      switch((Integer)response.get("code")) {
+        case INVALID_USER:
+        case USERNAME_REGD:
+          throw new ServerInvalidUserException((String)response.get("msg"));
+        case INVALID_PASSWORD:
+        case INVALID_PASSWORD_MATCH:
+          throw new ServerInvalidPasswordException((String)response.get("msg"));
+        case INVALID_EMAIL:
+        case INVALID_EMAIL_MATCH:
+        case EMAIL_REGD:
+          throw new ServerInvalidEmailException((String)response.get("msg"));
+        case INVALID_GENDER:
+          throw new ServerInvalidGenderException((String)response.get("msg"));
+        case INVALID_DATE:
+          throw new ServerInvalidDateException((String)response.get("msg"));
+        case INVALID_UNIT:
+          throw new ServerInvalidUnitException((String)response.get("msg"));
+        case INVALID_WEIGHT:
+          throw new ServerInvalidWeightException((String)response.get("msg"));
+        case INVALID_HEIGHT:
+          throw new ServerInvalidHeightException((String)response.get("msg"));
+        case BAD_INSERT:
+          throw new ServerConnectionException((String)response.get("msg"));
+      }
+    }
+  }
+  
   private static JSONObject runTransaction(PostBuilder post)
           throws ServerConnectionException {
     URLConnection conn = null;
@@ -184,8 +261,152 @@ public class Server implements ServerConstants {
     return responseObj;
   }
   
+  /**
+   * Retrieves the dietary consumption of the user over the given time range
+   * @param start
+   * @param end
+   * @return
+   * @throws ServerConnectionException
+   * @throws JSONException
+   * @throws ServerInvalidUserException
+   * @throws ServerInvalidDateException
+   * @throws ServerBadDateRangeException
+   * @throws ServerInvalidKeyException 
+   */
+  public static JSONObject trackDiet(Date start, Date end) throws
+          ServerConnectionException, JSONException, ServerInvalidUserException,
+          ServerInvalidDateException, ServerBadDateRangeException,
+          ServerInvalidKeyException {
+    if(userID == null || auth == null)
+      throw new ServerConnectionException("trackDiet requires login");
+    PostBuilder post = new PostBuilder();
+    post.add("request", "track_diet");
+    post.add("userid", userID);
+    post.add("auth", auth);
+    post.add("startdate", DATE_FORMAT.format(start));
+    post.add("enddate", DATE_FORMAT.format(end));
+    JSONObject response = runTransaction(post);
+    if(((String)response.get("response")).equals("ERROR")) {
+      switch((Integer)response.get("code")) {
+        case INVALID_USER:
+          throw new ServerInvalidUserException((String)response.get("msg"));
+        case INVALID_DATE:
+          throw new ServerInvalidDateException((String)response.get("msg"));
+        case BAD_DATE_RANGE:
+          throw new ServerBadDateRangeException((String)response.get("msg"));
+        case BAD_RETRIEVAL:
+          throw new ServerConnectionException((String)response.get("msg"));
+        case INVALID_KEY:
+          throw new ServerInvalidKeyException((String)response.get("msg"));
+      }
+    }
+    return response;
+  }
+  
+  /**
+   * Retrieves the exercise events of the user over the given time range
+   * @param start
+   * @param end
+   * @return
+   * @throws ServerConnectionException
+   * @throws JSONException
+   * @throws ServerInvalidUserException
+   * @throws ServerInvalidDateException
+   * @throws ServerBadDateRangeException
+   * @throws ServerInvalidKeyException 
+   */
+  public static JSONObject trackFitness(Date start, Date end) throws
+          ServerConnectionException, JSONException, ServerInvalidUserException,
+          ServerInvalidDateException, ServerBadDateRangeException,
+          ServerInvalidKeyException {
+    if(userID == null || auth == null)
+      throw new ServerConnectionException("trackFitness requires login");
+    PostBuilder post = new PostBuilder();
+    post.add("request", "track_fitness");
+    post.add("userid", userID);
+    post.add("auth", auth);
+    post.add("startdate", DATE_FORMAT.format(start));
+    post.add("enddate", DATE_FORMAT.format(end));
+    JSONObject response = runTransaction(post);
+    if(((String)response.get("response")).equals("ERROR")) {
+      switch((Integer)response.get("code")) {
+        case INVALID_USER:
+          throw new ServerInvalidUserException((String)response.get("msg"));
+        case INVALID_DATE:
+          throw new ServerInvalidDateException((String)response.get("msg"));
+        case BAD_DATE_RANGE:
+          throw new ServerBadDateRangeException((String)response.get("msg"));
+        case BAD_RETRIEVAL:
+          throw new ServerConnectionException((String)response.get("msg"));
+        case INVALID_KEY:
+          throw new ServerInvalidKeyException((String)response.get("msg"));
+      }
+    }
+    return response;
+  }
+  
+  /**
+   * Retrieves the user's changes in weight over the provided time range
+   * @param start
+   * @param end
+   * @return
+   * @throws ServerConnectionException
+   * @throws JSONException
+   * @throws ServerInvalidUserException
+   * @throws ServerInvalidDateException
+   * @throws ServerBadDateRangeException
+   * @throws ServerInvalidKeyException 
+   */
+  public static JSONObject trackWeight(Date start, Date end) throws
+          ServerConnectionException, JSONException, ServerInvalidUserException,
+          ServerInvalidDateException, ServerBadDateRangeException,
+          ServerInvalidKeyException {
+    if(userID == null || auth == null)
+      throw new ServerConnectionException("trackWeight requires login");
+    PostBuilder post = new PostBuilder();
+    post.add("request", "track_weight");
+    post.add("userid", userID);
+    post.add("auth", auth);
+    post.add("startdate", DATE_FORMAT.format(start));
+    post.add("enddate", DATE_FORMAT.format(end));
+    JSONObject response = runTransaction(post);
+    if(((String)response.get("response")).equals("ERROR")) {
+      switch((Integer)response.get("code")) {
+        case INVALID_USER:
+          throw new ServerInvalidUserException((String)response.get("msg"));
+        case INVALID_DATE:
+          throw new ServerInvalidDateException((String)response.get("msg"));
+        case BAD_DATE_RANGE:
+          throw new ServerBadDateRangeException((String)response.get("msg"));
+        case BAD_RETRIEVAL:
+          throw new ServerConnectionException((String)response.get("msg"));
+        case INVALID_KEY:
+          throw new ServerInvalidKeyException((String)response.get("msg"));
+      }
+    }
+    return response;
+  }
+  
+  /**
+   * Adds a meal to the user's history.
+   * @param date
+   * @param id
+   * @param amount
+   * @param type
+   * @throws ServerConnectionException
+   * @throws JSONException
+   * @throws ServerInvalidUserException
+   * @throws ServerInvalidItemException
+   * @throws ServerInvalidDateException
+   * @throws ServerInvalidMealException
+   * @throws ServerInvalidAmountException
+   * @throws ServerInvalidKeyException 
+   */
   public static void updateDiet(Date date, int id, double amount,
-          MealType type) throws ServerConnectionException, JSONException, ServerInvalidUserException, ServerInvalidItemException, ServerInvalidDateException, ServerInvalidMealException, ServerInvalidAmountException, ServerInvalidKeyException {
+          MealType type) throws ServerConnectionException, JSONException,
+          ServerInvalidUserException, ServerInvalidItemException,
+          ServerInvalidDateException, ServerInvalidMealException,
+          ServerInvalidAmountException, ServerInvalidKeyException {
     if(userID == null || auth == null)
       throw new ServerConnectionException("updateDiet requires login");
     PostBuilder post = new PostBuilder();
@@ -231,6 +452,73 @@ public class Server implements ServerConstants {
   }
   
   /**
+   * Adds an exercise session to the user's history
+   * @param date
+   * @param id
+   * @param lengthInMinutes
+   * @param amount
+   * @param intensity
+   * @throws ServerConnectionException
+   * @throws JSONException
+   * @throws ServerInvalidUserException
+   * @throws ServerInvalidItemException
+   * @throws ServerInvalidDateException
+   * @throws ServerInvalidTimeException
+   * @throws ServerInvalidAmountException
+   * @throws ServerInvalidIntensityException
+   * @throws ServerInvalidKeyException 
+   */
+  public static void updateFitness(Date date, int id, int lengthInMinutes,
+          int amount, ExerciseIntensity intensity) throws
+          ServerConnectionException, JSONException, ServerInvalidUserException,
+          ServerInvalidItemException, ServerInvalidDateException,
+          ServerInvalidTimeException, ServerInvalidAmountException,
+          ServerInvalidKeyException {
+    if(userID == null || auth == null)
+      throw new ServerConnectionException("updateFitness requires login");
+    PostBuilder post = new PostBuilder();
+    post.add("request", "update_fitness");
+    post.add("userid", userID);
+    post.add("auth", auth);
+    post.add("date", DATE_FORMAT.format(date));
+    post.add("id", "" + id);
+    post.add("time", "" + lengthInMinutes);
+    post.add("amount", "" + amount);
+    switch(intensity) {
+      case LIGHT:
+        post.add("intensity", "light");
+        break;
+      case MODERATE:
+        post.add("intensity", "moderate");
+        break;
+      case INTENSE:
+        post.add("intensity", "intense");
+        break;
+    }
+    JSONObject response = runTransaction(post);
+    if(((String)response.get("response")).equals("ERROR")) {
+      switch((Integer)response.get("code")) {
+        case INVALID_USER:
+          throw new ServerInvalidUserException((String)response.get("msg"));
+        case INVALID_ITEM:
+          throw new ServerInvalidItemException((String)response.get("msg"));
+        case INVALID_DATE:
+          throw new ServerInvalidDateException((String)response.get("msg"));
+        case INVALID_AMOUNT:
+          throw new ServerInvalidAmountException((String)response.get("msg"));
+        case INVALID_TIME:
+          throw new ServerInvalidTimeException((String)response.get("msg"));
+        case INVALID_INTENSITY:
+          throw new ServerInvalidIntensityException((String)response.get("msg"));
+        case BAD_INSERT:
+          throw new ServerConnectionException((String)response.get("msg"));
+        case INVALID_KEY:
+          throw new ServerInvalidKeyException((String)response.get("msg"));
+      }
+    }
+  }
+  
+  /**
    * Add a goal to the user's account
    * @param type The type of goal. Currently meaningless
    * @param start The date the goal should start
@@ -238,7 +526,10 @@ public class Server implements ServerConstants {
    * @param weight The desired weight.
    */
   public static void updateGoal(GoalType type, Date start, Date finish,
-          int weight) throws ServerConnectionException {
+          int weight) throws ServerConnectionException, JSONException,
+          ServerInvalidUserException, ServerInvalidDateException,
+          ServerInvalidWeightException, ServerBadDateRangeException,
+          ServerInvalidKeyException {
     if(userID == null || auth == null)
       throw new ServerConnectionException("updateGoal requires login");
     PostBuilder post = new PostBuilder();
@@ -263,6 +554,24 @@ public class Server implements ServerConstants {
     post.add("enddate", DATE_FORMAT.format(finish));
     post.add("weight", "" + weight);
     JSONObject response = runTransaction(post);
+    if(((String)response.get("response")).equals("ERROR")) {
+      switch((Integer)response.get("code")) {
+        case INVALID_USER:
+          throw new ServerInvalidUserException((String)response.get("msg"));
+        case INVALID_DATE:
+          throw new ServerInvalidDateException((String)response.get("msg"));
+        case INVALID_ITEM:
+          throw new ServerInvalidGoalTypeException((String)response.get("msg"));
+        case INVALID_WEIGHT:
+          throw new ServerInvalidWeightException((String)response.get("msg"));
+        case BAD_DATE_RANGE:
+          throw new ServerBadDateRangeException((String)response.get("msg"));
+        case BAD_INSERT:
+          throw new ServerConnectionException((String)response.get("msg"));
+        case INVALID_KEY:
+          throw new ServerInvalidKeyException((String)response.get("msg"));
+      }
+    }
   }
   
   /**
@@ -300,6 +609,37 @@ public class Server implements ServerConstants {
           throw new ServerInvalidKeyException((String)response.get("msg"));
       }
     }
+  }
+  
+  /**
+   * This request gives you all of the relevant current user data such as
+   * join-date, gender, birth date, height, and current weight.
+   * @return
+   * @throws ServerConnectionException
+   * @throws JSONException
+   * @throws ServerInvalidUserException
+   * @throws ServerInvalidKeyException 
+   */
+  public static JSONObject userData() throws ServerConnectionException,
+          JSONException, ServerInvalidUserException, ServerInvalidKeyException {
+    if(userID == null || auth == null)
+      throw new ServerConnectionException("userData requires login");
+    PostBuilder post = new PostBuilder();
+    post.add("request", "user_data");
+    post.add("userid", userID);
+    post.add("auth", auth);
+    JSONObject response = runTransaction(post);
+    if(((String)response.get("response")).equals("ERROR")) {
+      switch((Integer)response.get("code")) {
+        case INVALID_USER:
+          throw new ServerInvalidUserException((String)response.get("msg"));
+        case INVALID_KEY:
+          throw new ServerInvalidKeyException((String)response.get("msg"));
+        case BAD_INSERT:
+          throw new ServerConnectionException((String)response.get("msg"));
+      }
+    }
+    return response;
   }
   
   /**

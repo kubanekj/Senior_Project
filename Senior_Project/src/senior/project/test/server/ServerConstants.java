@@ -10,6 +10,12 @@ public interface ServerConstants {
   
   public enum MealType { BREAKFAST, DINNER, LUNCH, SNACK }
   
+  public enum ExerciseIntensity { LIGHT, MODERATE, INTENSE }
+  
+  public enum MeasurementSystem { US, METRIC }
+  
+  public enum Gender {MALE, FEMALE}
+  
   public static final int UNKNOWN_ERROR = 1;
   public static final int INVALID_USER = 2;
   public static final int INVALID_ITEM = 3;
