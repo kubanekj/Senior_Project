@@ -1,20 +1,18 @@
 package senior.project.test;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Calendar;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class WeightHistory extends Activity {
@@ -26,6 +24,9 @@ public class WeightHistory extends Activity {
     private int mYear;
     private int mMonth;
     private int mDay;
+    private String weight, date, units;
+    private EditText weightAmt;
+    private Spinner weightunits;
 
     static final int DATE_DIALOG_ID = 2;
 	
@@ -58,8 +59,11 @@ public class WeightHistory extends Activity {
         // display the current date (this method is below)
         updateDisplay();
 		
+        weightAmt = (EditText) findViewById(R.id.weightEntry);
+		weightunits = (Spinner) findViewById(R.id.Weightunits);
+		weightunits.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		
-		//When the sumbit button is clicked, user info is stored and 
+		//When the submit button is clicked, user info is stored and 
 		//the activity is ended, returning to the menu
 		final Button submit = (Button) findViewById(R.id.submitWeight);
 		submit.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
@@ -67,6 +71,9 @@ public class WeightHistory extends Activity {
             public void onClick(View v) {
             	//Once the info is stored, exit the activity
             	//Return to the main menu
+            	weight = weightAmt.getText().toString();
+            	units = weightunits.getSelectedItem().toString();
+				date = mYear + "-" + mMonth + "-" + mDay;
             	finish();
             }
         });

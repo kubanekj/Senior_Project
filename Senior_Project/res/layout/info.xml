@@ -77,7 +77,7 @@
                 android:text="Enter Your Current Weight" />
 
             <EditText
-                android:id="@+id/EditTextWeight"
+                android:id="@+id/StartWeight"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"

@@ -24,11 +24,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.text.InputType;
-import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -38,8 +35,8 @@ import android.widget.Toast;
 
 public class InformationActivity extends Activity{
 	private FileOutputStream fos, user;
-	String name, email, gender,birthday,password,checked,user_info,FILENAME  = "test_info";
-	EditText username, pass,verifyPass;
+	String name, email, gender,birthday,password, weight, verifyPassword,checked,user_info,FILENAME  = "test_info";
+	EditText username, pass,verifyPass, weightAmt;
 	boolean bRequiresResponse;
 	File filename = new File("test_info"), users;
 	byte[] readIn;
@@ -64,12 +61,12 @@ public class InformationActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.info);
 		
-		postData();
 		
 		username = (EditText) findViewById(R.id.EditTextName);
 		pass = (EditText) findViewById(R.id.pass);
 		verifyPass = (EditText) findViewById(R.id.verifyPass);
-	
+		
+		
 		View mlayout = findViewById(R.id.laidout);
 		mlayout.setBackgroundResource(R.drawable.fit);
 
@@ -112,14 +109,14 @@ public class InformationActivity extends Activity{
             public void onClick(View v) {
             	/*if (pass.getText().toString().matches("[a-zA-z0-9]*")) {
             	if(pass.getText().toString().equals(verifyPass.getText().toString())){
-            		
+            	*/	
             	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
-            	name = nameField.getText().toString()+ " ";  
+            	name = nameField.getText().toString();  
           
-            	final EditText emailField = (EditText) findViewById(R.id.EditTextWeight);  
-            	email = emailField.getText().toString() + " ";  
+            	final EditText weightField = (EditText) findViewById(R.id.StartWeight);  
+            	weight = weightField.getText().toString();  
         
-            	birthday = mYear +"-"+ mMonth +"-"+ mDay+ " ";        
+            	birthday = mYear +"-"+ mMonth +"-"+ mDay;        
          
             	
                	if(genderChoice ==0){
@@ -127,8 +124,10 @@ public class InformationActivity extends Activity{
             	}else{
             		gender = "Female";
             	}
+               	password = pass.getText().toString();
+               	verifyPassword = verifyPass.getText().toString();
                	
-        		
+        		/*
         		//Store information
         		String[] info = {name, email, birthday, gender};
         		writeToFile(info, FILENAME);
@@ -240,31 +239,4 @@ public class InformationActivity extends Activity{
         		}
         	}
         }
-        public void postData() {
-            // Create a new HttpClient and Post Header
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://www.yoursite.com/script.php");
-
-            try {
-                // Add your data
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                nameValuePairs.add(new BasicNameValuePair("id", "1"));
-                //nameValuePairs.add(new BasicNameValuePair("stringdata", "AndDev is Cool!"));
-                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-                // Execute HTTP Post Request
-                HttpResponse response = httpclient.execute(httppost);
-                String temp = EntityUtils.toString(response.getEntity());
-                if (temp.compareTo("SUCCESS")==0)
-                {
-                    Toast.makeText(this, "Sending complete!", Toast.LENGTH_LONG).show();
-                }else{
-                	Toast.makeText(this, "Sending complete!", Toast.LENGTH_LONG).show();
-                }     
-            } catch (ClientProtocolException e) {
-                // TODO Auto-generated catch block
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-            }
-        } 
-}
+       }

@@ -31,11 +31,12 @@ public final class R {
     public static final class id {
         public static final int Categories=0x7f060010;
         public static final int EditTextName=0x7f06001f;
-        public static final int EditTextWeight=0x7f060022;
         public static final int Goal=0x7f060028;
         public static final int StartDate=0x7f060003;
+        public static final int StartWeight=0x7f060022;
         public static final int Weight=0x7f06001b;
         public static final int WeightAct=0x7f06002b;
+        public static final int Weightunits=0x7f060042;
         public static final int closefit=0x7f06000e;
         public static final int closenutr=0x7f060012;
         public static final int dateDisplay=0x7f060023;
@@ -87,7 +88,7 @@ public final class R {
         public static final int submitGoal=0x7f06001c;
         public static final int submitLogin=0x7f060034;
         public static final int submitRegisterPage=0x7f060026;
-        public static final int submitWeight=0x7f060042;
+        public static final int submitWeight=0x7f060043;
         public static final int text=0x7f060002;
         public static final int track=0x7f06002c;
         public static final int trackingLayout=0x7f06003d;

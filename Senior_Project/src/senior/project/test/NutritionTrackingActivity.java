@@ -3,14 +3,17 @@ package senior.project.test;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class NutritionTrackingActivity extends Activity {
 	
@@ -19,9 +22,12 @@ public class NutritionTrackingActivity extends Activity {
     private int mStartYear, mEndYear;
     private int mStartMonth, mEndMonth;
     private int mStartDay, mEndDay;
+    
+    private String startDate, endDate, calsEaten;
 
     static final int START_DATE_DIALOG_ID = 3;
     static final int END_DATE_DIALOG_ID = 4;
+    static final int CALS_CONSUMED = 10;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -62,6 +68,19 @@ public class NutritionTrackingActivity extends Activity {
         // display the current date (this method is below)
         updateStartDisplay();
         updateEndDisplay();
+        
+        
+        final Button getNutr = (Button) findViewById(R.id.getNutr);
+  		getNutr.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
+  		getNutr.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	//Once the information is stored, close the activity
+            	calsEaten = 2000+"";
+            	showDialog(CALS_CONSUMED);
+            	startDate = mStartYear +  "-" + mStartMonth + "-" + mStartDay;
+            	endDate = mEndYear +  "-" + mEndMonth + "-" + mEndDay;
+            }
+        });
         
       //When the submit button is clicked, it will save user info
       		final Button submit = (Button) findViewById(R.id.exit);
@@ -122,6 +141,18 @@ public class NutritionTrackingActivity extends Activity {
                 return new DatePickerDialog(this,
                             mEndDateSetListener,
                             mStartYear, mStartMonth, mStartDay);
+            case CALS_CONSUMED:
+            	final CharSequence[] items = {calsEaten +" calories consumed"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Your Calorie Progession");
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                       // Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                return alert;
             }
             return null;
         

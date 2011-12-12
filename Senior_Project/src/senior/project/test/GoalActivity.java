@@ -1,32 +1,30 @@
 package senior.project.test;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Calendar;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class GoalActivity extends Activity {
 	
 	private TextView mStartDateDisplay, mEndDateDisplay;
+	private EditText weight;
     private Button mPickStartDate, mPickEndDate;
+    private Spinner units;
     private int mStartYear, mEndYear;
     private int mStartMonth, mEndMonth;
     private int mStartDay, mEndDay;
+    private String startDate, endDate, goalWeight, weightUnits;
 
     static final int START_DATE_DIALOG_ID = 3;
     static final int END_DATE_DIALOG_ID = 4;
@@ -77,8 +75,11 @@ public class GoalActivity extends Activity {
         mEndMonth = c.get(Calendar.MONTH);
         mEndDay = c.get(Calendar.DAY_OF_MONTH);
         
+        weight = (EditText) findViewById(R.id.weightGoal);
+        units = (Spinner) findViewById(R.id.Weight);
+        units.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         
-
+        
         // display the current date (this method is below)
         updateStartDisplay();
         updateEndDisplay();
@@ -89,6 +90,10 @@ public class GoalActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	//Once the information is stored, close the activity
+            	goalWeight = weight.getText().toString();
+            	weightUnits = units.getSelectedItem().toString();
+            	startDate = mStartYear +  "-" + mStartMonth + "-" + mStartDay;
+            	endDate = mEndYear +  "-" + mEndMonth + "-" + mEndDay;
             	finish();
             }
         });
