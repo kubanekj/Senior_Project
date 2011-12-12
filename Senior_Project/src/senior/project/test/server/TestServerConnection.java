@@ -1,4 +1,4 @@
-package senior.project.test;
+package senior.project.test.server;
 
 import org.json.JSONObject;
 
@@ -8,7 +8,7 @@ import org.json.JSONObject;
  */
 public class TestServerConnection {
   public static void main(String[] args) {
-    ServerSession test = new ServerSession();
+    Server test = new Server();
     JSONObject testValue = test.getTest(1);
     System.out.println(testValue);
   }
