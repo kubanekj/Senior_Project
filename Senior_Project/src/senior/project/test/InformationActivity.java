@@ -4,20 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-
+import senior.project.test.server.Server;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -107,9 +96,6 @@ public class InformationActivity extends Activity{
         submit.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	/*if (pass.getText().toString().matches("[a-zA-z0-9]*")) {
-            	if(pass.getText().toString().equals(verifyPass.getText().toString())){
-            	*/	
             	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
             	name = nameField.getText().toString();  
           
@@ -127,32 +113,11 @@ public class InformationActivity extends Activity{
                	password = pass.getText().toString();
                	verifyPassword = verifyPass.getText().toString();
                	
-        		/*
-        		//Store information
-        		String[] info = {name, email, birthday, gender};
-        		writeToFile(info, FILENAME);
-            	
-            	//Mask password
-            	EditText editText = (EditText) findViewById(R.id.pass);
-            	String plainPass = editText.toString();
-                editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD); 
-                editText.setTransformationMethod(new PasswordTransformationMethod()); 
-            	password = editText.toString() + " ";
-            	
-            	String[] storedInfo = {name, password, checked};
-            	writeToFile(storedInfo, "userinfo");
-            	*/
-            	
-            	
-            	
+               	Server s = new Server();
+               	
+               	//s.register(name, pass, verifyPass, email1, email2, gender, mesUnit, weight, height, birthday);
+
             	finish();
-            	/*}else{
-                	showDialog(ALPHANUM);
-                }
-            	}else{
-            		showDialog(PASS);
-            	}*/
-            
             }
         });
 	}

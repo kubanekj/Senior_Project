@@ -2,7 +2,17 @@ package senior.project.test;
 
 import java.io.FileOutputStream;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
+import org.json.JSONException;
+
+import senior.project.test.server.Server;
+import senior.project.test.server.errors.ServerConnectionException;
+import senior.project.test.server.errors.ServerInvalidDateException;
+import senior.project.test.server.errors.ServerInvalidKeyException;
+import senior.project.test.server.errors.ServerInvalidUserException;
+import senior.project.test.server.errors.ServerInvalidWeightException;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -71,9 +81,37 @@ public class WeightHistory extends Activity {
             public void onClick(View v) {
             	//Once the info is stored, exit the activity
             	//Return to the main menu
-            	weight = weightAmt.getText().toString();
+            	int weight = Integer.parseInt(weightAmt.getText().toString());
             	units = weightunits.getSelectedItem().toString();
 				date = mYear + "-" + mMonth + "-" + mDay;
+				
+				Server s = new Server();
+				Calendar cal  = new GregorianCalendar();
+				cal.set(mYear, mMonth, mDay);
+				Date d = cal.getTime();
+				
+				try {
+					s.updateWeight(d, weight);
+				} catch (ServerConnectionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidUserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidDateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidWeightException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
             	finish();
             }
         });

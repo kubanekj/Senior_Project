@@ -1,7 +1,21 @@
 package senior.project.test;
 
 import java.io.FileOutputStream;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
+import org.json.JSONException;
+
+import senior.project.test.server.Server;
+import senior.project.test.server.ServerConstants;
+import senior.project.test.server.errors.ServerConnectionException;
+import senior.project.test.server.errors.ServerInvalidAmountException;
+import senior.project.test.server.errors.ServerInvalidDateException;
+import senior.project.test.server.errors.ServerInvalidItemException;
+import senior.project.test.server.errors.ServerInvalidKeyException;
+import senior.project.test.server.errors.ServerInvalidMealException;
+import senior.project.test.server.errors.ServerInvalidUserException;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -82,55 +96,44 @@ public class NutritionActivity extends Activity {
 		submitNutr.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submitNutr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	/*final EditText calories = (EditText) findViewById(R.id.calories);  
-            	String cals = calories.getText().toString();  
-		        
-            	final EditText fat = (EditText) findViewById(R.id.fat);  
-            	String fatAmount = fat.getText().toString();  
-		        
-            	final EditText satFat = (EditText) findViewById(R.id.satFat);  
-            	String satFatAmount = satFat.getText().toString();
-		      
-            	final EditText transFat = (EditText) findViewById(R.id.transFat);  
-            	String transFatAmount = transFat.getText().toString();
+            	Server s = new Server();
             	
-            	final EditText unsatFat = (EditText) findViewById(R.id.unsatFat);  
-            	String unsatFatAmount = unsatFat.getText().toString();
-		       
-            	final EditText cholesterol = (EditText) findViewById(R.id.cholesterol);  
-            	String cholesAmount = cholesterol.getText().toString();
-            	
-            	final EditText sodium = (EditText) findViewById(R.id.sodium);  
-            	String sodiumAmount = sodium.getText().toString();
-            	
-            	final EditText carbs = (EditText) findViewById(R.id.carbs);  
-            	String carbAmount = carbs.getText().toString();
-		        		        
-            	final EditText protein = (EditText) findViewById(R.id.protein);  
-            	String proteinAmount = protein.getText().toString();
-            	
-            	//Store information
-            	 FileOutputStream fos;
-            	String FILENAME = "test_nutr";
-            	try{
-            		fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-            	}catch(FileNotFoundException fnf){
-            		fnf.printStackTrace();
-            	}
-            	try{
-            		fos.write(cals.getBytes());
-            		fos.write(fatAmount.getBytes());
-            		fos.write(satFatAmount.getBytes());
-            		fos.write(transFatAmount.getBytes());
-            		fos.write(unsatFatAmount.getBytes());
-            		fos.write(cholesAmount.getBytes());
-            		fos.write(sodiumAmount.getBytes());
-            		fos.write(carbAmount.getBytes());
-            		fos.write(proteinAmount.getBytes());
-            		fos.close();
-            	}catch(IOException ioe){
-            		ioe.printStackTrace();
-            	}*/
+            	final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+                
+                
+            	Calendar cal = new GregorianCalendar();
+            	cal.set(mYear, mMonth, mDay);
+            	Date d = cal.getTime();
+            	try {
+					s.updateDiet(d, 1, 1.0, ServerConstants.MealType.BREAKFAST);
+				} catch (ServerConnectionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidUserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidItemException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidDateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidMealException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidAmountException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             	//Once the information is stored, close the activity
             	finish();
             }

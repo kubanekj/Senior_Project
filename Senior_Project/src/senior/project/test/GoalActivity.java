@@ -2,10 +2,23 @@ package senior.project.test;
 
 import java.io.FileOutputStream;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
+import org.json.JSONException;
+
+import senior.project.test.server.Server;
+import senior.project.test.server.ServerConstants;
+import senior.project.test.server.errors.ServerBadDateRangeException;
+import senior.project.test.server.errors.ServerConnectionException;
+import senior.project.test.server.errors.ServerInvalidDateException;
+import senior.project.test.server.errors.ServerInvalidKeyException;
+import senior.project.test.server.errors.ServerInvalidUserException;
+import senior.project.test.server.errors.ServerInvalidWeightException;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +27,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GoalActivity extends Activity {
 	
@@ -64,6 +78,8 @@ public class GoalActivity extends Activity {
                 showDialog(END_DATE_DIALOG_ID);
             }
         });
+        
+        final Context ctx = this.getBaseContext();
 
         // get the current date
         final Calendar c = Calendar.getInstance();
@@ -92,8 +108,46 @@ public class GoalActivity extends Activity {
             	//Once the information is stored, close the activity
             	goalWeight = weight.getText().toString();
             	weightUnits = units.getSelectedItem().toString();
-            	startDate = mStartYear +  "-" + mStartMonth + "-" + mStartDay;
-            	endDate = mEndYear +  "-" + mEndMonth + "-" + mEndDay;
+            	
+            	int goal = Integer.parseInt(goalWeight);
+            	
+            	Calendar cal1 = new GregorianCalendar();
+            	Calendar cal2 = new GregorianCalendar();
+            	
+            	cal1.set(mStartYear, mStartMonth, mStartDay); 
+            	cal2.set(mEndYear, mEndMonth, mEndDay);
+            	
+            	Date startDate = cal1.getTime();
+            	Date endDate = cal2.getTime();
+            	
+            	Server s = new Server();
+            	
+            	try {
+					s.updateGoal(ServerConstants.GoalType.LOSE_WEIGHT, startDate, endDate, goal);
+				} catch (ServerConnectionException e) {
+					// TODO Auto-generated catch block
+					Toast.makeText(ctx, "Unable to connect to server", Toast.LENGTH_LONG);
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidUserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidDateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidWeightException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerBadDateRangeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            	
             	finish();
             }
         });
