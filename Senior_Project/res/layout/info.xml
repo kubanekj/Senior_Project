@@ -127,11 +127,11 @@
                 android:text="Enter Your Height" />
 
             <EditText
-                android:id="@+id/height"
+                android:id="@+id/heightInput"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:inputType="number" >
+                android:inputType="numberDecimal" >
             </EditText>
 
             <Spinner

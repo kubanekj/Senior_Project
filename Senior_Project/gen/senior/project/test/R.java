@@ -55,7 +55,7 @@ public final class R {
         public static final int goalEndDateDisplay=0x7f06001b;
         public static final int goalLayout=0x7f060018;
         public static final int goalStartDateDisplay=0x7f060019;
-        public static final int height=0x7f06002a;
+        public static final int heightInput=0x7f06002a;
         public static final int image=0x7f060001;
         public static final int info=0x7f060030;
         public static final int infoButton=0x7f06003f;

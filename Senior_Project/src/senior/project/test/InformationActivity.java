@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -61,6 +62,7 @@ public class InformationActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.info);
 		
+		final Context ctx = this.getApplicationContext();
 		
 		username = (EditText) findViewById(R.id.EditTextName);
 		pass = (EditText) findViewById(R.id.pass);
@@ -110,8 +112,12 @@ public class InformationActivity extends Activity{
             	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
             	name = nameField.getText().toString();  
           
-            	final EditText weightField = (EditText) findViewById(R.id.StartWeight);  
-            	weight = Integer.parseInt(weightField.getText().toString());  
+            	final EditText weightField = (EditText) findViewById(R.id.StartWeight);
+            	try{
+            	weight = Double.parseDouble(weightField.getText().toString());
+            	}catch(NumberFormatException nfe){
+            		Toast.makeText(ctx, "Please Enter a height", Toast.LENGTH_LONG);
+            	}
             	weight = weight / 2.2;
             	
             	Calendar cal = new GregorianCalendar();
@@ -124,7 +130,13 @@ public class InformationActivity extends Activity{
                	verifyPassword = verifyPass.getText().toString();
                	email = findViewById(R.id.Email).toString();
                	verifyEmail = findViewById(R.id.verifyEmail).toString();
-               	height = Integer.parseInt(findViewById(R.id.height).toString());
+               	
+               	final EditText heightfield = (EditText) findViewById(R.id.heightInput);
+              	try{
+               	double height = Double.parseDouble(heightfield.getText().toString());
+               	}catch(NumberFormatException e){
+               		Toast.makeText(ctx, "Please Enter your Height", Toast.LENGTH_LONG);
+               	}
                	height = height*2.54;
                	String sendheight = height + "";
                	Spinner units = (Spinner)findViewById(R.id.units);
