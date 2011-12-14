@@ -36,34 +36,18 @@
 		<string name="breakfastchoice">Breakfast</string>
 		<string name="lunchchoice">Lunch</string>
 		<string name="dinnerchoice">Dinner</string>
+		<string name="snackchoice">Snack</string>
 		
 		<string name="lightchoice">Light</string>
 		<string name="moderatechoice">Moderate</string>
 		<string name="intensechoice">Intense</string>
 		
-	    <string name="eggs">Eggs</string>
-	    <string name="pancakes">Pancakes</string>
-	    <string name="bacon">Bacon</string>
-	    
-        <string name="turkey">Turkey Sandwich</string>
-        <string name="burger">Burger</string>
-        <string name="sub">Sub</string>
-	        
-        <string name="steak">Steak</string>
-        <string name="roast">Roast</string>
-        <string name="ribs">Ribs</string>
+	    <string name="samplefood1">Sample Food 1</string>
+	    <string name="samplefood2">Sample Food 2</string>
         
-        <string name="walk">Walking</string>
-      	<string name="yoga">Yoga</string>
-      	<string name="bicycle">Bicycling</string>
+        <string name="samplefit1">Sample Fitness One</string>
+      	<string name="samplefit2">Sample Fitness Two</string>
       	
-   	    <string name="jogging">Light Jogging</string>
-   	    <string name="speedwalk">Speed Walking</string>
-  	    <string name="pushup">Push Ups</string>
-  	    
-        <string name="marathon">Marathon</string>
-        <string name="weightlift">Weight Lifting</string>
-        <string name="cardio">Cardio</string>
       
     <string-array name="timeframe">     
     	<item>@string/days</item>
@@ -85,6 +69,7 @@
     	<item>@string/breakfastchoice</item>
         <item>@string/lunchchoice</item>  
         <item>@string/dinnerchoice</item>
+        <item>@string/snackchoice</item>
     </string-array> 
     
     <string-array name="exerCategories">     
@@ -94,43 +79,14 @@
     </string-array> 
     
     <string-array name="breakfast">     
-    	<item>@string/eggs</item>
-        <item>@string/pancakes</item>  
-        <item>@string/bacon</item>
-    </string-array> 
-    
-   	<string-array name="lunch">     
-    	<item>@string/turkey</item>
-        <item>@string/burger</item>  
-        <item>@string/sub</item>
-    </string-array> 
-    
-    <string-array name="dinner">     
-    	<item>@string/steak</item>
-        <item>@string/roast</item>  
-        <item>@string/ribs</item>
+    	<item>@string/samplefood1</item>
+        <item>@string/samplefood2</item>  
     </string-array> 
     
     <string-array name="light">     
-    	<item>@string/walk</item>
-        <item>@string/yoga</item>  
-        <item>@string/bicycle</item>
-    </string-array> 
-    
-    <string-array name="moderate">     
-    	<item>@string/jogging</item>
-        <item>@string/speedwalk</item>  
-        <item>@string/pushup</item>
-    </string-array> 
-    
-    <string-array name="intense">     
-    	<item>@string/marathon</item>
-        <item>@string/weightlift</item>  
-        <item>@string/cardio</item>
-    </string-array> 
-                
-            
-        
+    	<item>@string/samplefit1</item>
+        <item>@string/samplefit2</item>  
+    </string-array>
         
     <string-array name="userinfo">     
         <item>@string/feedbacktype1</item>  

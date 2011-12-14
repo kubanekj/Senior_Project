@@ -4,6 +4,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import senior.project.test.server.Server;
+import senior.project.test.server.errors.ServerBadDateRangeException;
+import senior.project.test.server.errors.ServerConnectionException;
+import senior.project.test.server.errors.ServerInvalidDateException;
+import senior.project.test.server.errors.ServerInvalidKeyException;
+import senior.project.test.server.errors.ServerInvalidUserException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -15,7 +24,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ExerciseTrackingActivity extends Activity {
 	
@@ -28,6 +36,8 @@ public class ExerciseTrackingActivity extends Activity {
     private String calsBurned, calsBurnedPerDay;
     
     private String startDate, endDate;
+    
+    Server s = new Server();
 
     static final int START_DATE_DIALOG_ID = 3;
     static final int END_DATE_DIALOG_ID = 4;
@@ -87,9 +97,44 @@ public class ExerciseTrackingActivity extends Activity {
   		getExer.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
   		getExer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	//Once the information is stored, close the activity
-            	calsBurned = 1500 + "";
-            	calsBurnedPerDay = 1500/getNumDays()+"";
+            	JSONObject data = null;
+            	
+            	Calendar cal1 = new GregorianCalendar();
+            	Calendar cal2 = new GregorianCalendar();
+            	
+            	cal1.set(mStartYear, mStartMonth, mStartDay); 
+            	cal2.set(mEndYear, mEndMonth, mEndDay);
+
+            	
+            	try {
+					data = s.trackFitness(cal1.getTime(), cal2.getTime());
+				} catch (ServerConnectionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidUserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidDateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerBadDateRangeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            	
+            	try {
+					calsBurned = data.get("name") + "";
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            	calsBurnedPerDay = Integer.parseInt(calsBurned)/getNumDays()+"";
             	showDialog(CALS_BURNED);
             	startDate = mStartYear +  "-" + mStartMonth + "-" + mStartDay;
             	endDate = mEndYear +  "-" + mEndMonth + "-" + mEndDay;

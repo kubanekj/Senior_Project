@@ -15,6 +15,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
+	
+	String auth;
+	int uid;
+	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
@@ -43,6 +47,7 @@ public class LoginActivity extends Activity {
             	}catch(ServerConnectionException sce){
             		Toast.makeText(ctx, "Unable to connect to server", Toast.LENGTH_LONG);
             	}
+            	//uid = s.userId;
             
             	Intent myIntent = new Intent(LoginActivity.this, EnterInfoActivity.class);
             	LoginActivity.this.startActivity(myIntent);

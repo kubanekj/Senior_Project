@@ -7,15 +7,16 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import senior.project.test.server.Server;
 import senior.project.test.server.ServerConstants;
+import senior.project.test.server.errors.ServerBadRetrievalException;
 import senior.project.test.server.errors.ServerConnectionException;
 import senior.project.test.server.errors.ServerInvalidAmountException;
 import senior.project.test.server.errors.ServerInvalidDateException;
 import senior.project.test.server.errors.ServerInvalidItemException;
 import senior.project.test.server.errors.ServerInvalidKeyException;
-import senior.project.test.server.errors.ServerInvalidMealException;
 import senior.project.test.server.errors.ServerInvalidTimeException;
 import senior.project.test.server.errors.ServerInvalidUserException;
 import android.app.Activity;
@@ -34,7 +35,11 @@ public class ExerciseActivity extends Activity{
 	FileOutputStream fos;
 	boolean online = false;
 	Spinner category,choices;
-	ArrayList<String> exercises= new ArrayList<String>();
+	ArrayList<String> exercises = new ArrayList<String>();
+	JSONObject data = null, fitness1=null, fitness2=null;
+	Server s = new Server();
+	int numExer, numReps, duration;
+	String name;
 	@Override
 	/*
 	 * (non-Javadoc)
@@ -55,43 +60,22 @@ public class ExerciseActivity extends Activity{
 		category.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		choices.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 
-		/*if(category.getSelectedItem().toString() == "Breakfast"){
-			//choices.setAdapter(adapter);
-		}else if(category.getSelectedItem().toString() == "Lunch"){
+		numReps = Integer.parseInt(findViewById(R.id.numReps).toString());
+		duration = Integer.parseInt(findViewById(R.id.length).toString());
+		
+		try {
+			data = s.listFitness();
+		} catch (ServerConnectionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ServerBadRetrievalException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
-		}else{
-
-		}*/
-
-		category.setOnItemSelectedListener(
-				new OnItemSelectedListener() {
-					public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-						// Here's what I need help with. I basically want it to say:
-						Context ctx = getBaseContext();
-						switch(position) {
-
-						case 0:
-							ArrayAdapter adapter1 = ArrayAdapter.createFromResource(category.getContext(), R.array.light, android.R.layout.simple_spinner_dropdown_item);
-							//adapter1.setDropDownViewResource(android.R.drawable.spinner_background);
-
-							choices.setAdapter(adapter1);
-
-							break;
-						case 1:
-							ArrayAdapter adapter2 = ArrayAdapter.createFromResource(ctx, R.array.moderate, android.R.layout.simple_spinner_dropdown_item);
-							choices.setAdapter(adapter2);
-							break;
-						case 2:
-							ArrayAdapter adapter3 = ArrayAdapter.createFromResource(ctx, R.array.intense, android.R.layout.simple_spinner_dropdown_item);
-							choices.setAdapter(adapter3);
-							break;
-						}
-					}
-					public void onNothingSelected(AdapterView<?> parents) {
-
-					}
-				}
-				);
 
 		//When the sumbit button is clicked, user info is stored and 
 		//the activity is ended, returning to the menu
@@ -100,6 +84,8 @@ public class ExerciseActivity extends Activity{
 		//submit.
 		submit.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				int selected = choices.getSelectedItemPosition() + 1;
+				int intensity = category.getSelectedItemPosition();
 
 				Server s = new Server();
 
@@ -113,7 +99,14 @@ public class ExerciseActivity extends Activity{
 				cal.set(mYear, mMonth, mDay);
 				Date d = cal.getTime();
 				try {
-					s.updateFitness(d, 1, 60, 1, ServerConstants.ExerciseIntensity.INTENSE);
+					switch(intensity){
+					case 0:
+						s.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.LIGHT);
+					case 1:
+						s.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.MODERATE);
+					case 2:
+						s.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.INTENSE);
+					}
 				} catch (ServerConnectionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

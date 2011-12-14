@@ -32,6 +32,7 @@ public class NutritionActivity extends Activity {
 	FileOutputStream fos;
 	Spinner category;
 	Spinner choices;
+	double amount;
 
 	@Override
 	/*
@@ -51,51 +52,17 @@ public class NutritionActivity extends Activity {
 		category.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		choices = (Spinner) findViewById(R.id.foodOptions);
 		choices.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
-		
-		/*if(category.getSelectedItem().toString() == "Breakfast"){
-			//choices.setAdapter(adapter);
-		}else if(category.getSelectedItem().toString() == "Lunch"){
-			
-		}else{
-			
-		}*/
-		
-	    category.setOnItemSelectedListener(
-	            new OnItemSelectedListener() {
-	                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-	                    // Here's what I need help with. I basically want it to say:
-	                	Context ctx = getBaseContext();
-	                     switch(position) {
-
-	                     case 0:
-	                    	 ArrayAdapter adapter1 = ArrayAdapter.createFromResource(category.getContext(), R.array.breakfast, android.R.layout.simple_spinner_dropdown_item);
-	                    	 //adapter1.setDropDownViewResource(android.R.drawable.spinner_background);
-	                    	 
-	                    	 choices.setAdapter(adapter1);
-	                    	 
-	                    	 break;
-	                     case 1:
-	                    	 ArrayAdapter adapter2 = ArrayAdapter.createFromResource(ctx, R.array.lunch, android.R.layout.simple_spinner_dropdown_item);
-	                    	 choices.setAdapter(adapter2);
-	                    	 break;
-	                     case 2:
-	                    	 ArrayAdapter adapter3 = ArrayAdapter.createFromResource(ctx, R.array.dinner, android.R.layout.simple_spinner_dropdown_item);
-	                    	 choices.setAdapter(adapter3);
-	                    	 break;
-	                }
-	                }
-	                public void onNothingSelected(AdapterView<?> parents) {
-
-	                }
-	                }
-	            );
-
+		amount = Double.parseDouble(( findViewById(R.id.servings).toString()));
 		
 		//When the submit button is clicked, it will save user info
 		final Button submitNutr = (Button) findViewById(R.id.closenutr);
 		submitNutr.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
         submitNutr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+            	
+            	int selected = choices.getSelectedItemPosition() + 1;
+				int type = category.getSelectedItemPosition();
+            	
             	Server s = new Server();
             	
             	final Calendar c = Calendar.getInstance();
@@ -108,7 +75,16 @@ public class NutritionActivity extends Activity {
             	cal.set(mYear, mMonth, mDay);
             	Date d = cal.getTime();
             	try {
-					s.updateDiet(d, 1, 1.0, ServerConstants.MealType.BREAKFAST);
+            		switch(type){
+            		case 0:
+						s.updateDiet(d, selected, amount, ServerConstants.MealType.BREAKFAST);
+            		case 1:
+            			s.updateDiet(d, selected, amount, ServerConstants.MealType.LUNCH);
+            		case 2:
+            			s.updateDiet(d, selected, amount, ServerConstants.MealType.DINNER);
+            		case 3:
+            			s.updateDiet(d, selected, amount, ServerConstants.MealType.SNACK);
+            		}
 				} catch (ServerConnectionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

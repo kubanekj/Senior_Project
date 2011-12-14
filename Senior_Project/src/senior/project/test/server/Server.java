@@ -174,7 +174,7 @@ public class Server implements ServerConstants {
    */
   public static void register(String userName, String password1,
           String password2, String email1, String email2, Gender gender,
-          MeasurementSystem mesUnit, int weight, String height, Date birthday)
+          MeasurementSystem mesUnit, double weight, String height, Date birthday)
           throws ServerConnectionException, JSONException,
           ServerInvalidPasswordException, ServerInvalidUserException,
           ServerInvalidEmailException, ServerInvalidWeightException,

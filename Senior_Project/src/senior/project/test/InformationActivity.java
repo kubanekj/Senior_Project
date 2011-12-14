@@ -1,17 +1,25 @@
 package senior.project.test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import org.json.JSONException;
 
 import senior.project.test.server.Server;
+import senior.project.test.server.ServerConstants;
+import senior.project.test.server.errors.ServerConnectionException;
+import senior.project.test.server.errors.ServerInvalidDateException;
+import senior.project.test.server.errors.ServerInvalidEmailException;
+import senior.project.test.server.errors.ServerInvalidHeightException;
+import senior.project.test.server.errors.ServerInvalidPasswordException;
+import senior.project.test.server.errors.ServerInvalidUserException;
+import senior.project.test.server.errors.ServerInvalidWeightException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -19,26 +27,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class InformationActivity extends Activity{
 	private FileOutputStream fos, user;
-	String name, email, gender,birthday,password, weight, verifyPassword,checked,user_info,FILENAME  = "test_info";
+	String name, gender,birthday,password, verifyPassword,checked,user_info,email,verifyEmail;
 	EditText username, pass,verifyPass, weightAmt;
 	boolean bRequiresResponse;
 	File filename = new File("test_info"), users;
+	double  weight;
 	byte[] readIn;
 	
 	String USER_INFO;
 	
-	int genderChoice=0;
+	int genderChoice=0; 
+	double height;
 	static Button chooseGender;
 	private TextView mDateDisplay;
     private Button mPickDate;
     private int mYear;
     private int mMonth;
-    private int mDay;
+    private int mDay,unitsSelected;
 
     static final int DATE_DIALOG_ID = 0;
     static final int PASS = 5;
@@ -100,22 +111,67 @@ public class InformationActivity extends Activity{
             	name = nameField.getText().toString();  
           
             	final EditText weightField = (EditText) findViewById(R.id.StartWeight);  
-            	weight = weightField.getText().toString();  
-        
+            	weight = Integer.parseInt(weightField.getText().toString());  
+            	weight = weight / 2.2;
+            	
+            	Calendar cal = new GregorianCalendar();
+            	cal.set(mYear, mMonth, mDay);
             	birthday = mYear +"-"+ mMonth +"-"+ mDay;        
          
             	
-               	if(genderChoice ==0){
-            		gender = " Male"; 
-            	}else{
-            		gender = "Female";
-            	}
+               	
                	password = pass.getText().toString();
                	verifyPassword = verifyPass.getText().toString();
+               	email = findViewById(R.id.Email).toString();
+               	verifyEmail = findViewById(R.id.verifyEmail).toString();
+               	height = Integer.parseInt(findViewById(R.id.height).toString());
+               	height = height*2.54;
+               	String sendheight = height + "";
+               	Spinner units = (Spinner)findViewById(R.id.units);
+               	unitsSelected = units.getSelectedItemPosition();
+               	
                	
                	Server s = new Server();
                	
-               	//s.register(name, pass, verifyPass, email1, email2, gender, mesUnit, weight, height, birthday);
+               	try {
+               		if(unitsSelected == 0){
+               			if(genderChoice == 0){
+               				s.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.MALE , ServerConstants.MeasurementSystem.US, weight, sendheight, cal.getTime());
+               			}else{
+               				s.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.FEMALE , ServerConstants.MeasurementSystem.US, weight, sendheight, cal.getTime());
+               			}
+               		}else{
+               			if(genderChoice == 0){
+               				s.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.MALE , ServerConstants.MeasurementSystem.METRIC, weight, sendheight, cal.getTime());
+               			}else{
+               				s.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.FEMALE , ServerConstants.MeasurementSystem.METRIC, weight, sendheight, cal.getTime());
+               			}
+               		}
+				} catch (ServerConnectionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidPasswordException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidUserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidEmailException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidWeightException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidHeightException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServerInvalidDateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
             	finish();
             }
@@ -189,7 +245,7 @@ public class InformationActivity extends Activity{
          * @param filename the file to read from
          * @return the file content
          */ 
-        public void writeToFile(String[] userInput, String storageFilename){
+       /* public void writeToFile(String[] userInput, String storageFilename){
         	FileOutputStream fos = null ;
         	try{
         		fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
@@ -203,5 +259,5 @@ public class InformationActivity extends Activity{
         			ioe.printStackTrace();
         		}
         	}
-        }
+        }*/
        }

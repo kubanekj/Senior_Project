@@ -7,16 +7,31 @@
 
     <Spinner
         android:id="@+id/Categories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/foodCategories" />
+        android:entries="@array/foodCategories" 
+         android:layout_width="200dp"
+        android:layout_height="80dp"/>
 
     <Spinner
         android:id="@+id/foodOptions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         android:entries="@array/breakfast"
+        android:entries="@array/breakfast"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
        />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Number Of Servings" />
+
+    <EditText
+        android:id="@+id/servings"
+        android:inputType="number"
+        android:layout_width="200dp"
+        android:layout_height="80dp">
+
+        <requestFocus />
+    </EditText>
 
     <Button
         android:id="@+id/closenutr"
