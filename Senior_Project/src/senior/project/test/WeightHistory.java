@@ -81,17 +81,22 @@ public class WeightHistory extends Activity {
             public void onClick(View v) {
             	//Once the info is stored, exit the activity
             	//Return to the main menu
-            	int weight = Integer.parseInt(weightAmt.getText().toString());
+            	int weight = 0;
+            	try{
+            		weight = Integer.parseInt(weightAmt.getText().toString());
+            	}catch(NumberFormatException nfe){
+            		
+            	}
             	units = weightunits.getSelectedItem().toString();
 				date = mYear + "-" + mMonth + "-" + mDay;
 				
-				Server s = new Server();
+				
 				Calendar cal  = new GregorianCalendar();
 				cal.set(mYear, mMonth, mDay);
 				Date d = cal.getTime();
 				
 				try {
-					s.updateWeight(d, weight);
+					Server.updateWeight(d, weight);
 				} catch (ServerConnectionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

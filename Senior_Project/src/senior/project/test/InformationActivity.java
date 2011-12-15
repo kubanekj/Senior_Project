@@ -47,6 +47,7 @@ public class InformationActivity extends Activity{
 	double height;
 	static Button chooseGender;
 	private TextView mDateDisplay;
+	Spinner units;
     private Button mPickDate;
     private int mYear;
     private int mMonth;
@@ -67,7 +68,8 @@ public class InformationActivity extends Activity{
 		username = (EditText) findViewById(R.id.EditTextName);
 		pass = (EditText) findViewById(R.id.pass);
 		verifyPass = (EditText) findViewById(R.id.verifyPass);
-		
+		units  = (Spinner) findViewById(R.id.units);
+		units.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		
 		View mlayout = findViewById(R.id.laidout);
 		mlayout.setBackgroundResource(R.drawable.fit);
@@ -143,20 +145,19 @@ public class InformationActivity extends Activity{
                	unitsSelected = units.getSelectedItemPosition();
                	
                	
-               	Server s = new Server();
                	
                	try {
                		if(unitsSelected == 0){
                			if(genderChoice == 0){
-               				s.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.MALE , ServerConstants.MeasurementSystem.US, weight, sendheight, cal.getTime());
+               				Server.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.MALE , ServerConstants.MeasurementSystem.US, weight, sendheight, cal.getTime());
                			}else{
-               				s.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.FEMALE , ServerConstants.MeasurementSystem.US, weight, sendheight, cal.getTime());
+               				Server.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.FEMALE , ServerConstants.MeasurementSystem.US, weight, sendheight, cal.getTime());
                			}
                		}else{
                			if(genderChoice == 0){
-               				s.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.MALE , ServerConstants.MeasurementSystem.METRIC, weight, sendheight, cal.getTime());
+               				Server.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.MALE , ServerConstants.MeasurementSystem.METRIC, weight, sendheight, cal.getTime());
                			}else{
-               				s.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.FEMALE , ServerConstants.MeasurementSystem.METRIC, weight, sendheight, cal.getTime());
+               				Server.register(name, password, verifyPassword, email, verifyEmail,ServerConstants.Gender.FEMALE , ServerConstants.MeasurementSystem.METRIC, weight, sendheight, cal.getTime());
                			}
                		}
 				} catch (ServerConnectionException e) {

@@ -136,8 +136,8 @@ public class Server implements ServerConstants {
           JSONException {
     PostBuilder post = new PostBuilder();
     post.add("request", "login");
-    post.add("username", "noidea");
-    post.add("password", "evenlessidea");
+    post.add("username", userName);
+    post.add("password", password);
     JSONObject result = runTransaction(post);
     if( ((String)result.get("response")).equals("ERROR") ) {
       if( ((Integer)result.get("code")).equals(BAD_LOGIN))

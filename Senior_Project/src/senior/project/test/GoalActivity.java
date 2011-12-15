@@ -106,10 +106,14 @@ public class GoalActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	//Once the information is stored, close the activity
+            	int goal = 0;
             	goalWeight = weight.getText().toString();
             	weightUnits = units.getSelectedItem().toString();
-            	
-            	int goal = Integer.parseInt(goalWeight);
+            	try{
+            	goal = Integer.parseInt(goalWeight);
+            	}catch(NumberFormatException nfe){
+            		
+            	}
             	
             	Calendar cal1 = new GregorianCalendar();
             	Calendar cal2 = new GregorianCalendar();
@@ -120,10 +124,9 @@ public class GoalActivity extends Activity {
             	Date startDate = cal1.getTime();
             	Date endDate = cal2.getTime();
             	
-            	Server s = new Server();
             	
             	try {
-					s.updateGoal(ServerConstants.GoalType.LOSE_WEIGHT, startDate, endDate, goal);
+					Server.updateGoal(ServerConstants.GoalType.LOSE_WEIGHT, startDate, endDate, goal);
 				} catch (ServerConnectionException e) {
 					// TODO Auto-generated catch block
 					Toast.makeText(ctx, "Unable to connect to server", Toast.LENGTH_LONG);

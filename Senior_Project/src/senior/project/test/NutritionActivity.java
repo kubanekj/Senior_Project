@@ -52,7 +52,7 @@ public class NutritionActivity extends Activity {
 		category.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		choices = (Spinner) findViewById(R.id.foodOptions);
 		choices.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
-		amount = Double.parseDouble(( findViewById(R.id.servings).toString()));
+		
 		
 		//When the submit button is clicked, it will save user info
 		final Button submitNutr = (Button) findViewById(R.id.closenutr);
@@ -63,7 +63,7 @@ public class NutritionActivity extends Activity {
             	int selected = choices.getSelectedItemPosition() + 1;
 				int type = category.getSelectedItemPosition();
             	
-            	Server s = new Server();
+           
             	
             	final Calendar c = Calendar.getInstance();
                 int mYear = c.get(Calendar.YEAR);
@@ -74,16 +74,26 @@ public class NutritionActivity extends Activity {
             	Calendar cal = new GregorianCalendar();
             	cal.set(mYear, mMonth, mDay);
             	Date d = cal.getTime();
+            	try{
+            	amount = Double.parseDouble(( findViewById(R.id.servings).toString()));
+            	}catch(NumberFormatException nfe){
+            		
+            	}
+            	
             	try {
             		switch(type){
             		case 0:
-						s.updateDiet(d, selected, amount, ServerConstants.MealType.BREAKFAST);
+						Server.updateDiet(d, selected, amount, ServerConstants.MealType.BREAKFAST);
+						break;
             		case 1:
-            			s.updateDiet(d, selected, amount, ServerConstants.MealType.LUNCH);
+            			Server.updateDiet(d, selected, amount, ServerConstants.MealType.LUNCH);
+            			break;
             		case 2:
-            			s.updateDiet(d, selected, amount, ServerConstants.MealType.DINNER);
+            			Server.updateDiet(d, selected, amount, ServerConstants.MealType.DINNER);
+            			break;
             		case 3:
-            			s.updateDiet(d, selected, amount, ServerConstants.MealType.SNACK);
+            			Server.updateDiet(d, selected, amount, ServerConstants.MealType.SNACK);
+            			break;
             		}
 				} catch (ServerConnectionException e) {
 					// TODO Auto-generated catch block

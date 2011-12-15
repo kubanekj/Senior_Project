@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fitnessTrackLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+     <ScrollView 
+        android:id="@+id/scroll"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent">
+        <LinearLayout
+            android:id="@+id/laidout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
     
       <TextView
         android:id="@+id/StartDate"
@@ -26,7 +36,7 @@
         android:id="@+id/pickExerStartDate"
          android:layout_width="200dp"
         android:layout_height="80dp"
-        android:text="Button" />
+        android:text="Choose Start Date" />
 
     <TextView
         android:id="@+id/endDate"
@@ -50,7 +60,7 @@
         android:id="@+id/pickExerEndDate"
         android:layout_width="200dp"
         android:layout_height="80dp"
-        android:text="Button" />
+        android:text="Choose End Date" />
 
     <Button
         android:id="@+id/getExer"
@@ -63,5 +73,7 @@
        android:layout_width="200dp"
         android:layout_height="80dp"
         android:text="Close" />
+    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -25,7 +25,8 @@ public class NutritionTrackingActivity extends Activity {
     private int mStartDay, mEndDay;
     
         
-    private String startDate, endDate, calsEaten, calsEatenPerDay;
+    private String startDate, endDate;
+    private int calsEaten, calsEatenPerDay;
 
     static final int START_DATE_DIALOG_ID = 3;
     static final int END_DATE_DIALOG_ID = 4;
@@ -34,6 +35,10 @@ public class NutritionTrackingActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nutritiontracking);
+		
+		
+		View mlayout= findViewById(R.id.nutritionTrackLayout);
+		mlayout.setBackgroundResource(R.drawable.fit);
 		
 		mStartDateDisplay = (TextView) findViewById(R.id.nutrStartDate);
         mPickStartDate = (Button) findViewById(R.id.pickNutrStartDate);
@@ -86,8 +91,8 @@ public class NutritionTrackingActivity extends Activity {
   		getNutr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	//Once the information is stored, close the activity
-            	calsEaten = 2000+"";
-            	calsEatenPerDay = 2000/getNumDays()+ "";
+            	calsEaten = 2000;
+            	calsEatenPerDay = calsEaten/getNumDays();
             	showDialog(CALS_CONSUMED);
             	startDate = mStartYear +  "-" + mStartMonth + "-" + mStartDay;
             	endDate = mEndYear +  "-" + mEndMonth + "-" + mEndDay;

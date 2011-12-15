@@ -4,6 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+     <ScrollView 
+        android:id="@+id/scroll"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent">
+        <LinearLayout
+            android:id="@+id/laidout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
     <Spinner
         android:id="@+id/Categories"
@@ -20,6 +29,9 @@
 
     <TextView
         android:id="@+id/textView1"
+        android:textColor="#0000ff"
+        android:background="#ffffff"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter Number Of Servings" />
@@ -38,5 +50,7 @@
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:text="Close" />
+    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

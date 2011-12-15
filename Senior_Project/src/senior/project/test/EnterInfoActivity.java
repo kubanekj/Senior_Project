@@ -33,15 +33,7 @@ public class EnterInfoActivity extends Activity{
             }
         });
         startExercise.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
-           //If tracking page button is clicked, start tracking activity
-        final Button startTrack = (Button) findViewById(R.id.track);
-        startTrack.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	Intent myIntent = new Intent(EnterInfoActivity.this, TrackingActivity.class);
-            	EnterInfoActivity.this.startActivity(myIntent);
-            }
-        });  
-        startTrack.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
+       
       //If goal page button is clicked, start goal activity
         final Button startGoal = (Button) findViewById(R.id.Goal);
         startGoal.setOnClickListener(new View.OnClickListener() {

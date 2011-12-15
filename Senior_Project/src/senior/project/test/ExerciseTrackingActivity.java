@@ -33,11 +33,10 @@ public class ExerciseTrackingActivity extends Activity {
     private int mStartMonth, mEndMonth;
     private int mStartDay, mEndDay;
     
-    private String calsBurned, calsBurnedPerDay;
+    private int calsBurned = 1500, calsBurnedPerDay;
     
     private String startDate, endDate;
     
-    Server s = new Server();
 
     static final int START_DATE_DIALOG_ID = 3;
     static final int END_DATE_DIALOG_ID = 4;
@@ -46,6 +45,9 @@ public class ExerciseTrackingActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.exercisetracking);
+		
+		View mlayout= findViewById(R.id.fitnessTrackLayout);
+		mlayout.setBackgroundResource(R.drawable.fit);
 		
 		mStartDateDisplay = (TextView) findViewById(R.id.exerStartDate);
         mPickStartDate = (Button) findViewById(R.id.pickExerStartDate);
@@ -107,7 +109,7 @@ public class ExerciseTrackingActivity extends Activity {
 
             	
             	try {
-					data = s.trackFitness(cal1.getTime(), cal2.getTime());
+					data = Server.trackFitness(cal1.getTime(), cal2.getTime());
 				} catch (ServerConnectionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -128,13 +130,13 @@ public class ExerciseTrackingActivity extends Activity {
 					e.printStackTrace();
 				}
             	
-            	try {
-					calsBurned = data.get("name") + "";
+            	/*try {
+					//calsBurned = data.get("name") + "";
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-            	calsBurnedPerDay = Integer.parseInt(calsBurned)/getNumDays()+"";
+				}*/
+            	calsBurnedPerDay = calsBurned/getNumDays();
             	showDialog(CALS_BURNED);
             	startDate = mStartYear +  "-" + mStartMonth + "-" + mStartDay;
             	endDate = mEndYear +  "-" + mEndMonth + "-" + mEndDay;

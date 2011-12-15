@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1" >
+    <ScrollView 
+        android:id="@+id/scroll"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent">
+        <LinearLayout
+            android:id="@+id/laidout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
     
     <TextView
         android:id="@+id/goalStartDateDisplay"
@@ -73,5 +82,7 @@
         android:layout_height="80dp"
         android:text="Submit" >
     </Button>
+    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

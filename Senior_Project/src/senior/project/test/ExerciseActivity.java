@@ -60,22 +60,7 @@ public class ExerciseActivity extends Activity{
 		category.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 		choices.getBackground().setColorFilter(0xFFFFDD22, PorterDuff.Mode.MULTIPLY);
 
-		numReps = Integer.parseInt(findViewById(R.id.numReps).toString());
-		duration = Integer.parseInt(findViewById(R.id.length).toString());
 		
-		try {
-			data = s.listFitness();
-		} catch (ServerConnectionException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ServerBadRetrievalException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
 
 		//When the sumbit button is clicked, user info is stored and 
 		//the activity is ended, returning to the menu
@@ -86,8 +71,14 @@ public class ExerciseActivity extends Activity{
 			public void onClick(View v) {
 				int selected = choices.getSelectedItemPosition() + 1;
 				int intensity = category.getSelectedItemPosition();
+				try{
+				numReps = Integer.parseInt(findViewById(R.id.numReps).toString());
+				duration = Integer.parseInt(findViewById(R.id.length).toString());
+				}catch(NumberFormatException nfe){
+					
+				}
 
-				Server s = new Server();
+
 
 				final Calendar c = Calendar.getInstance();
 				int mYear = c.get(Calendar.YEAR);
@@ -101,11 +92,14 @@ public class ExerciseActivity extends Activity{
 				try {
 					switch(intensity){
 					case 0:
-						s.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.LIGHT);
+						Server.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.LIGHT);
+						break;
 					case 1:
-						s.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.MODERATE);
+						Server.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.MODERATE);
+						break;
 					case 2:
-						s.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.INTENSE);
+						Server.updateFitness(d, selected, duration, numReps, ServerConstants.ExerciseIntensity.INTENSE);
+						break;
 					}
 				} catch (ServerConnectionException e) {
 					// TODO Auto-generated catch block
